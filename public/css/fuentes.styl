@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css?family=Lobster|Oxygen|Roboto+Slab|Yanone+Kaffeesatz');
+
+/*
+font-family: 'Roboto Slab', serif;
+font-family: 'Oxygen', sans-serif;
+font-family: 'Lobster', cursive;
+font-family: 'Yanone Kaffeesatz', sans-serif;
+*/
+
+/*
+rojo #FF4E50
+azul #1793d1
+gris #333333
+*/
+
+titulo = 'Yanone Kaffeesatz'
+letra-grande = 2.4em
+gris-oscuro = #666
+
+parrafo = 'Roboto'
+letra-mediana = 1.2em
+gris = #888
+azul = #4db8ff
+
+cursiva = 'Lobster'
+letra-pequena = 0.8em
+
+titulo()
+  font-family titulo sans-serif
+  font-size letra-grande
+  color gris-oscuro
+  font-weight: bold
+
+parrafo()
+  font-family parrafo sans-serif
+  font-size letra-mediana
+  color gris
+
+link()
+  font-family parrafo sans-serif
+  font-size letra-mediana
+  color azul
+  text-decoration none
+
+h1, h2, h3, h4, h5
+  titulo()
+
+p
+  parrafo()
+
+a
+  link()

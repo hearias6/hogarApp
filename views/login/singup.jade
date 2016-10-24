@@ -1,0 +1,16 @@
+extends ../template/layout
+
+block content 
+  
+  h2 Crear cuenta
+  
+  form(action="")
+    label(for="email") Email
+    input(type="email", placeholder="Ingrese su email" name="email" id="email")
+    label(for="contrasena") Contraseña
+    input(type="password", placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
+    label(for="confirmar_contrasena") Confirmar contraseña
+    input(type="confirm_password", placeholder="Confirmar contraseña" name="confirmar_contrasena" id="confirmar_contrasena")
+    button Singup
+    
+    a(href="/") Inicio

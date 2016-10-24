@@ -1,0 +1,16 @@
+extends ../template/layout
+
+block content 
+  
+  h2 Iniciar sesion
+  p puedes iniciar sesion
+  
+  form(action="")
+    label(for="email") Email
+    input(type="email", placeholder="Ingrese su email" name="email" id="email")
+    label(for="contrasena") Contraseña
+    input(type="password", placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
+    button Login
+    
+    
+    a(href="/singup") Crear cuenta
