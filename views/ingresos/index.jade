@@ -1,0 +1,46 @@
+// mostrar los 
+
+extends ../template/layout
+
+block content
+  
+  include ../template/menu.jade
+  
+  main(class='container')
+    
+    section(class='row')
+      div(class='col-12')      
+        h2 Ingresos        
+        p estos son los ingresos registrados hasta la fecha de hoy 
+        
+        table()
+          thead
+            tr
+              th Categoria
+              th Valor
+              th Fecha Publicacion
+              th Opciones
+          tbody
+            tr
+              td Salario 
+              td 905.000
+              td 2016
+              td
+            tr
+              td Bonos 
+              td 10.000
+              td 2016
+              td
+            tr
+              td Subsidio 
+              td 200.000
+              td 2016
+              td
+            tr
+              td Comisiones
+              td 150.000
+              td 2016
+              td
+            
+  
+  block script 

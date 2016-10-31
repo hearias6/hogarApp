@@ -2,15 +2,19 @@ extends ../template/layout
 
 block content 
   
-  h2 Crear cuenta
-  
-  form(action="")
-    label(for="email") Email
-    input(type="email", placeholder="Ingrese su email" name="email" id="email")
-    label(for="contrasena") Contraseña
-    input(type="password", placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
-    label(for="confirmar_contrasena") Confirmar contraseña
-    input(type="confirm_password", placeholder="Confirmar contraseña" name="confirmar_contrasena" id="confirmar_contrasena")
-    button Singup
+  h2(class='header-title text-center') Cuenta de usuario
+  form(action="" class='form')
+    div.control      
+      label(for="email" class="form-label") Email
+      input(type="email", class="form-input" placeholder="Ingrese su email" name="email" id="email")
+    div.control
+      label(for="contrasena" class="form-label") Contraseña
+      input(type="password", class="form-input" placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
+    div.control
+      label(for="contrasena" class="form-label") confirmar Contraseña
+      input(type="password", class="form-input" placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
+    div.control
+      button(class='form-button') Crear cuenta
     
-    a(href="/") Inicio
+    
+    a(href="/" class="text-center") Inicio

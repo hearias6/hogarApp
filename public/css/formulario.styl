@@ -1,0 +1,65 @@
+movil = 768px
+tablet = 1024px
+escritorio = 1200px
+/*
+info azul
+danger rojo
+warning amarillo
+success verde
+*/
+
+// Móviles pequeños o moviles en vertical
+
+div.control
+  display block
+  margin-bottom 1.5%
+  margin-top 1.5%
+  //border 1px solid #aaa
+
+form.form
+  display block
+  width 90%
+  margin auto
+  border 1px solid #ccc
+
+div.control > label.form-label
+  display block
+  width 95%
+  text-align left
+  padding-right 0.5%
+
+div.control > input.form-input
+  width 95%
+  display block
+  padding 5px 10px
+  border-radius 2.5px
+  border 1px solid #ccc
+
+div.control > .form-button
+  width 33%
+  padding 0.25% 0%
+
+// Móviles en horizontal o tablets en vertical
+@media (min-width: movil)
+
+  div.control > label.form-label
+    display inline-block
+    width 20%
+    text-align right
+
+  div.control > input.form-input
+    width 75%
+    display inline-block
+
+  div.control > .form-button
+    margin-left 20.5%
+    width  15%
+
+
+// Tablets en horizonal y escritorios normales
+@media (min-width: tablet)
+  form.form
+    width 80%
+
+  // Escritorios muy anchos
+  //@media (min-width: escritorio)

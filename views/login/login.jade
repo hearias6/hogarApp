@@ -2,15 +2,16 @@ extends ../template/layout
 
 block content 
   
-  h2 Iniciar sesion
-  p puedes iniciar sesion
-  
-  form(action="")
-    label(for="email") Email
-    input(type="email", placeholder="Ingrese su email" name="email" id="email")
-    label(for="contrasena") Contraseña
-    input(type="password", placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
-    button Login
+  h2(class='header-title text-center') Iniciar sesion  
+  form(action="" class='form')
+    div.control      
+      label(for="email" class="form-label") Email
+      input(type="email", class="form-input" placeholder="Ingrese su email" name="email" id="email")
+    div.control
+      label(for="contrasena" class="form-label") Contraseña
+      input(type="password", class="form-input" placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
+    div.control
+      button(class='form-button') Login
     
     
-    a(href="/singup") Crear cuenta
+    a(href="/singup" class="text-center") Crear cuenta

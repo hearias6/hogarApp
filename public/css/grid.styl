@@ -1,0 +1,80 @@
+movil = 768px
+tablet = 1024px
+escritorio = 1200px
+
+columna = 8.3333333333%
+
+.row
+  //display:block;
+
+// Móviles pequeños o moviles en vertical
+[class^=col]
+    float left
+    height auto
+    -webkit-box-sizing border-box
+    -moz-box-sizing border-box
+    box-sizing border-box
+    margin-top 10px
+    padding 7px 8px
+    //background #ccc
+    //border 10px solid #FFF
+
+
+.col-1,
+.col-2,
+.col-3,
+.col-4,
+.col-5,
+.col-6,
+.col-7,
+.col-8,
+.col-9,
+.col-10,
+.col-11,
+.col-12
+  width 100%
+
+
+// Móviles en horizontal o tablets en vertical
+//@media (min-width: movil)
+
+// Tablets en horizonal y escritorios normales
+@media (min-width: tablet)
+  .col-1
+      width columna * 1
+
+  .col-2
+      width columna * 2
+
+  .col-3
+      width columna * 3
+
+  .col-4
+      width columna * 4
+
+  .col-5
+      width columna * 5
+
+  .col-6
+      width columna * 6
+
+  .col-7
+      width columna * 7
+
+  .col-8
+      width columna * 8
+
+  .col-9
+      width columna * 9
+
+  .col-10
+      width columna * 10
+
+  .col-11
+      width columna * 11
+
+  .col-12
+      width columna * 12
+
+// Escritorios muy anchos
+//@media (min-width: escritorio)

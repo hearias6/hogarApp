@@ -7,25 +7,27 @@ font-family: 'Lobster', cursive;
 font-family: 'Yanone Kaffeesatz', sans-serif;
 */
 
-/*
-rojo #FF4E50
-azul #1793d1
-gris #333333
-*/
-
 titulo = 'Yanone Kaffeesatz'
-letra-grande = 2.4em
-gris-oscuro = #666
-
 parrafo = 'Roboto'
-letra-mediana = 1.2em
+cursiva = 'Lobster'
+
+letra-extra-grande = 2.0em
+letra-grande = 1.6em
+letra-mediana = 1.1em
+letra-pequena = 0.8em
+
+gris-oscuro = #666
 gris = #888
 azul = #4db8ff
 
-cursiva = 'Lobster'
-letra-pequena = 0.8em
+tituloPrincipal()
+  font-family titulo sans-serif
+  font-size letra-extra-grande
+  color gris-oscuro
+  font-weight: bold
+  text-align center
 
-titulo()
+tituloSencundario()
   font-family titulo sans-serif
   font-size letra-grande
   color gris-oscuro
@@ -42,11 +44,41 @@ link()
   color azul
   text-decoration none
 
-h1, h2, h3, h4, h5
-  titulo()
 
-p
+h1, h2, h3
+  tituloPrincipal()
+
+h4, h5, h6
+
+p, li, label, span, button, table
   parrafo()
 
 a
   link()
+
+.header-title
+  display block
+  width 98%
+  padding 0.5% 0% 0% 1.5%
+  //border 1px solid #aaa
+
+.text-center
+  text-align center
+
+.text-right
+  text-align right
+
+.text-left
+  text-align left
+
+.text-upper
+  text-transform uppercase
+
+.text-lower
+  text-transform lowercase
+
+.text-capitalize
+  text-transform capitalize
+
+.text-none
+  text-transform none
