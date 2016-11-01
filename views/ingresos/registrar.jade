@@ -1,0 +1,24 @@
+extends ../template/layout
+
+block content
+  
+  main(class='container')
+    section(class='row')
+      div(class='col-6')
+        h2 Nuevo Ingreso
+        
+        form(class='form')
+          div(class='control')
+            label(for="" class='form-label') Categoria
+            select(class='form-combo')
+              option Salario
+              option Bono
+          div(class='control')
+            label(for='' class='form-label') valor
+            input(type="number" class='form-input')
+          div(class='control')
+            label(for="" class='form-label') Fecha de publicacion
+            input(type="date" class='form-input')
+          div(class='control')
+            button(class='') Registrar
+  block script

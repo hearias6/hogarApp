@@ -9,7 +9,26 @@ block content
   main(class='container')
     
     section(class='row')
-      div(class='col-12')      
+      
+      div(class='col-6')
+        h2 Nuevo Ingreso
+        
+        form(class='form')
+          div(class='control')
+            label(for="" class='form-label') Categoria
+            select(class='form-combo')
+              option Salario
+              option Bono
+          div(class='control')
+            label(for='' class='form-label') valor
+            input(type="number" class='form-input')
+          div(class='control')
+            label(for="" class='form-label') Fecha de publicacion
+            input(type="date" class='form-input')
+          div(class='control')
+            button(class='') Registrar
+      
+      div(class='col-6')      
         h2 Ingresos        
         p estos son los ingresos registrados hasta la fecha de hoy 
         
@@ -22,25 +41,25 @@ block content
               th Opciones
           tbody
             tr
-              td Salario 
-              td 905.000
-              td 2016
-              td
+              td(data-label='Categoria') Salario 
+              td(data-label='Valor') 905.000
+              td(data-label='Fecha Publicacion') 2016
+              td(data-label='Opciones') editar eliminar
             tr
-              td Bonos 
-              td 10.000
-              td 2016
-              td
+              td(data-label='Categoria') Bonos 
+              td(data-label='Valor') 10.000
+              td(data-label='Fecha Publicacion') 2016
+              td(data-label='Opciones') editar eliminar
             tr
-              td Subsidio 
-              td 200.000
-              td 2016
-              td
+              td(data-label='Categoria') Subsidio 
+              td(data-label='Valor') 200.000
+              td(data-label='Fecha Publicacion') 2016
+              td(data-label='Opciones') editar eliminar
             tr
-              td Comisiones
-              td 150.000
-              td 2016
-              td
+              td(data-label='Categoria') Comisiones
+              td(data-label='Valor') 150.000
+              td(data-label='Fecha Publicacion') 2016
+              td(data-label='Opciones') editar eliminar
             
   
   block script 

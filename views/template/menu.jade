@@ -5,10 +5,19 @@ header
     span Menu  
   nav(class='menu')
     ul
-      li
-        a(href="http://localhost:4040/app") Inicio
-      li
-        a(href="http://localhost:4040/app/ingresos") Ingresos
+      if title == 'Home'
+        li(class='active')
+          a(href="http://localhost:4040/app") Inicio
+      else 
+        li          
+          a(href="http://localhost:4040/app") Inicio
+          
+      if title == 'Ingresos'        
+        li(class='active')
+          a(href="http://localhost:4040/app/ingresos") Ingresos
+      else 
+        li
+          a(href="http://localhost:4040/app/ingresos") Ingresos        
       li
         a(href="http://localhost:4040/app/gastos") Gastos
       li

@@ -10,34 +10,36 @@ success verde
 
 // Móviles pequeños o moviles en vertical
 
-div.control
-  display block
-  margin-bottom 1.5%
-  margin-top 1.5%
+
   //border 1px solid #aaa
 
 form.form
   display block
   width 90%
   margin auto
-  border 1px solid #ccc
-
-div.control > label.form-label
-  display block
-  width 95%
-  text-align left
-  padding-right 0.5%
-
-div.control > input.form-input
-  width 95%
-  display block
-  padding 5px 10px
-  border-radius 2.5px
-  border 1px solid #ccc
-
-div.control > .form-button
-  width 33%
-  padding 0.25% 0%
+  //border 1px solid #ccc
+  div.control
+    display block
+    margin-bottom 1.5%
+    margin-top 1.5%
+    label.form-label
+      display block
+      width 95%
+      text-align left
+      padding-right 0.5%
+    select.form-combo
+      display block
+      width 100%
+      padding 1% 2%
+    input.form-input
+      width 95%
+      display block
+      padding 5px 10px
+      border-radius 2.5px
+      border 1px solid #ccc
+   .form-button
+      width 33%
+      padding 0.25% 0%
 
 // Móviles en horizontal o tablets en vertical
 @media (min-width: movil)
