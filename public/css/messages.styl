@@ -1,0 +1,34 @@
+rojoOscuro = #ff4d4d
+rojoClaro = #ffcccc
+azulOscuro = #00b300
+azulClaro = #b3ffb3
+verdeOscuro = #0099cc
+verdeClaro = #b3ecff
+amarilloClaro = #fff0b3
+amarilloOscuro = #b3b300
+
+message(bgColor, fontColor)
+  background bgColor
+  color fontColor
+  border 1px solid bgcolor
+
+.close
+  float right
+
+.msj
+  overflow-x hidden
+  margin 3% 0.5%
+  padding 2%
+  parrafo()
+
+.warning
+  message(amarilloClaro, amarilloOscuro )
+
+.error
+  message(rojoClaro, rojoOscuro)
+
+.info
+  message(verdeClaro, verdeOscuro)
+
+.success
+  message(azulClaro, azulOscuro)

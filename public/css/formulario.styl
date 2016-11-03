@@ -17,6 +17,9 @@ form.form
   display block
   width 90%
   margin auto
+  a
+    display block
+    text-align center
   //border 1px solid #ccc
   div.control
     display block
@@ -38,25 +41,22 @@ form.form
       border-radius 2.5px
       border 1px solid #ccc
    .form-button
-      width 33%
-      padding 0.25% 0%
+      //width 33%
+      padding 0.2% 3%
+
+
 
 // Móviles en horizontal o tablets en vertical
 @media (min-width: movil)
 
-  div.control > label.form-label
-    display inline-block
-    width 20%
-    text-align right
-
-  div.control > input.form-input
-    width 75%
-    display inline-block
-
-  div.control > .form-button
-    margin-left 20.5%
-    width  15%
-
+  div.control
+    label.form-label
+      display inline-block
+      width 20%
+      text-align right
+    input.form-input
+      width 50%
+      display inline-block
 
 // Tablets en horizonal y escritorios normales
 @media (min-width: tablet)

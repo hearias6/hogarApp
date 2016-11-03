@@ -11,7 +11,22 @@ block content
       label(for="contrasena" class="form-label") Contraseña
       input(type="password", class="form-input" placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
     div.control
-      button(class='form-button') Login
+      button(class='form-button') Login    
     
+    a(href="/signup" class="text-center") Crear cuenta
     
-    a(href="/singup" class="text-center") Crear cuenta
+    div(class='msj warning') 
+      div(class='icon-cross close')
+      div warning
+      
+    div(class='msj error')
+      div(class='icon-cross close')
+      div error
+      
+    div(class='msj info') 
+      div(class='icon-cross close')
+      div info
+    
+    div(class='msj success')
+      div(class='icon-cross close')
+      div success

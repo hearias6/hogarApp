@@ -6,8 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('login/login', { title: 'Login' });
 });
 
-router.get('/singup',function(req, res, next) {
-   res.render('login/singup', {title: 'Singup'})
+router.get('/signup',function(req, res, next) {
+   res.render('login/signup', {title: 'Signup'})
 })
 
 router.get('/grid',function(req, res, next) {
