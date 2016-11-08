@@ -20,6 +20,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // cookies y sessiones
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
+var session = require('express-session');
+var config = require('./config/session');
+app.use(session(config));
 
 // archivos estaticos
 app.use('/web',express.static(path.join(__dirname, 'public')));

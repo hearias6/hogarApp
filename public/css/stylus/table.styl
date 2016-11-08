@@ -1,0 +1,78 @@
+/*
+movil = 768px
+tablet = 1024px
+escritorio = 1200px
+
+// Móviles en horizontal o tablets en vertical
+@media (min-width: movil)
+  [class^=col]
+    background blue
+
+// Tablets en horizonal y escritorios normales
+@media (min-width: tablet)
+  [class^=col]
+    background yellow
+
+// Escritorios muy anchos
+@media (min-width: escritorio)
+  [class^=col]
+    background red
+*/
+
+@media (max-width movil)
+
+  table
+    width 100%
+    border-collapse collapse
+    border-spacing 0
+    border-left 1px solid #ccc
+    border-right 1px solid #ccc
+    thead
+      display none
+    tbody td
+      display block
+      text-align center
+      width 100%
+      border-top 1px solid #ccc
+      padding 2% 0%
+      &:before
+        display block
+        content attr(data-label)
+        font-weight bold
+      &:first-child
+        background #ddd
+        font-weight bold
+        font-size 1.1em
+// Tablets en horizonal y escritorios normales
+
+
+@media (min-width: movil)
+
+  table
+    width 98%
+    margin 2% auto
+    overflow-x auto
+    border-collapse: collapse
+    thead
+      th
+        background-color #ccc
+        padding 1%
+    tbody
+      tr
+        &:hover
+          background-color #ddd
+        td
+          padding 0.5%
+
+  table.tb-zebra
+    tbody
+      tr
+        &:hover
+          background-color #fff
+        &:nth-child(odd)
+          background-color #ddd
+
+  table.tb-center
+    tbody
+      tr
+        text-align center
