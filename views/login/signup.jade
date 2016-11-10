@@ -3,7 +3,7 @@ extends ../template/layout
 block content 
   
   h2(class='header-title text-center') Cuenta de usuario
-  form(action="" class='form')
+  form(class='form')
     div.control      
       label(for="email" class="form-label") Email
       input(type="email", class="form-input" placeholder="Ingrese su email" name="email" id="email")
@@ -12,9 +12,11 @@ block content
       input(type="password", class="form-input" placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
     div.control
       label(for="contrasena" class="form-label") confirmar Contraseña
-      input(type="password", class="form-input" placeholder="Ingrese su contraseña" name="contrasena" id="contrasena")
+      input(type="password", class="form-input" placeholder="Ingrese su contraseña" name="contrasena2" id="contrasena2")
     div.control
-      button(class='form-button') Crear cuenta
+      button(class='form-button' id='btnSignup') Crear cuenta
     
     
     a(href="/" class="text-center") Inicio
+    
+  
