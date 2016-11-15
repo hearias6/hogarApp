@@ -17,7 +17,7 @@ block content
         
         p da click #[a(href='http://localhost:4040/app/nuevo') aqui ] para un nuevo ingreso.
         
-        table(class='')
+        table(class='tb-center')
           thead
             tr
               th Categoria
@@ -25,26 +25,14 @@ block content
               th Fecha Publicacion
               th Opciones
           tbody
-            tr
-              td(data-label='Categoria') Salario 
-              td(data-label='Valor') 905.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') #[a(href='http://localhost:4040/app/editar') #[span(class='icon-pencil') ] ] #[a(href='') #[span(class='icon-cross')]]
-            tr
-              td(data-label='Categoria') Bonos 
-              td(data-label='Valor') 10.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') #[a(href='http://localhost:4040/app/editar') #[span(class='icon-pencil') ] ] #[a(href='') #[span(class='icon-cross')]]
-            tr
-              td(data-label='Categoria') Subsidio 
-              td(data-label='Valor') 200.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') #[a(href='http://localhost:4040/app/editar') #[span(class='icon-pencil') ] ] #[a(href='') #[span(class='icon-cross')]]
-            tr
-              td(data-label='Categoria') Comisiones
-              td(data-label='Valor') 150.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') #[a(href='http://localhost:4040/app/editar') #[span(class='icon-pencil') ] ] #[a(href='') #[span(class='icon-cross')]]
+            
+            each ingreso in resultado
+              tr
+                td(data-label='Categoria')= ingreso.descripcion
+                td(data-label='Valor')= ingreso.valor
+                td(data-label='Fecha Publicacion')= ingreso.fecha_creacion
+                td(data-label='Opciones') #[a(href='http://localhost:4040/app/editar/'+ingreso.ingresos_id) #[span(class='icon-pencil') ] ] #[a(href='') #[span(class='icon-cross')]]
+              
             
   
   block script 

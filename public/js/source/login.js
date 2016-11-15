@@ -18,6 +18,17 @@ $(document).ready(function() {
       })
       .done(function(data) {
         console.log(data.resultado);
+
+        if (data.resultado == 'success') {
+          //$('.success').removeClass('hidden');
+          //$('.error').addClass('hidden');
+          $(location).attr('href','http://localhost:4040/app'); 
+        }
+
+        if (data.resultado == 'no existe') {
+          $('.success').addClass('hidden');
+          $('.error').removeClass('hidden');
+        }
       })
       .fail(function(error) {
         console.log("error: " + error );
@@ -35,7 +46,6 @@ $(document).ready(function() {
      e.preventDefault();
      console.log('crear usuario');
 
-
      var datos = $(this).parent().parent().serialize();
      console.log('datos: '+ datos);
 
@@ -46,16 +56,27 @@ $(document).ready(function() {
        data: datos
      })
      .done(function(resultado) {
-       console.log("success");
        console.log('resultado: ' + resultado.resultado);
+       $('.success').removeClass('hidden');
+       $('.error').addClass('hidden');
      })
-     .fail(function() {
+     .fail(function(jqXHR, textStatus, errorThrown) {
        console.log("error");
+       console.log('descripcion del error: ' + errorThrown);
+       $('.error').removeClass('hidden');
+       $('.success').addClass('hidden');
      })
      .always(function() {
        console.log("complete");
      });
 
+     /*
+     .fail(function (jqXHR, textStatus, errorThrown) {
+         var defaultOption = 'US'
+         selectDropdownByText('Id', defaultOption);
+
+         console.log(errorThrown);
+     */
 
    }
 

@@ -1,21 +1,12 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.render('home/index',{title:'Home'});
-});
+var controller = require('.././controllers');
 
-router.get('/ingresos', function(req, res, next) {
-  res.render('ingresos/index',{title:'Ingresos'});
-});
+router.get('/', controller.userController.index);
+router.get('/ingresos', controller.userController.ingresos);
+router.get('/editar/:id', controller.userController.mostrarFormularioEditar);
 
-router.get('/nuevo', function(req, res, next) {
-  res.render('ingresos/registrar',{title:'Registrar'});
-});
-
-router.get('/editar', function(req, res, next) {
-  res.render('ingresos/editar',{title:'Editar'});
-});
+router.post('/editar', controller.userController.modificarIngreso);
 
 module.exports = router;

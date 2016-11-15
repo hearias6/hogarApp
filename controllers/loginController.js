@@ -26,14 +26,12 @@ module.exports = {
 
     var consulta = "select email from usuarios where email = ? and contrasena = ?";
 
-    var resultado = {resultado:false};
-
     var filas = null;
 
     db.query(consulta,[email, contrasena],function(error, rows, filds) {
       if (error) {
         console.log('Error en la consulta.');
-        resultado.resultado = false;
+        resultado.resultado = 'error';
         throw error;
       }else{
 
@@ -45,10 +43,11 @@ module.exports = {
 
         if (filas === 1) {
           console.log('coinciden');
-          resultado.resultado = true;
+          resultado.resultado = 'success';
+          req.session.userName = email;
         } else {
           console.log('no coinciden');
-          resultado.resultado = false;
+          resultado.resultado = 'no existe';
         }
 
         res.json(resultado);
@@ -61,17 +60,30 @@ module.exports = {
 
   registrarUsuario : function(req, res, next) {
 
-      console.log('registrar usuario controller');
-
       var email = req.body.email;
-      console.log('email: ' + email);
-
       var pass = req.body.contrasena;
-      console.log('pass: ' + pass);
 
-      var resultado = {resultado : 'success'}
+      var datos = {email : email, contrasena : pass}
+      var resultado = {resultado:null};
 
-      res.json(resultado);
+      console.log('email: ' + email + ' pass: ' + pass);
+
+      var consulta = 'insert into usuarios set ?';
+
+      db.query(consulta, datos, function(err, result) {
+          if (err) {
+              console.log('error en la consulta');
+              throw err;
+              resultado.resultado = 'error'
+          } else {
+              console.log('exito en la consulta');
+              resultado.resultado = "success";
+              console.log('resultado : ' + result);
+          }
+
+          res.json(resultado);
+      })
+
   }
 
 

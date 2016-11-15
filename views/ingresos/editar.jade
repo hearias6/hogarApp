@@ -8,20 +8,31 @@ block content
         h2 Editar
         
         form(class='form')
+          input(type='hidden', name='id' id='id' value='#{resultado[0].ingresos_id}')
           div(class='control')
-            label(for="" class='form-label') Categoria
-            select(class='form-combo')
-              option Salario
-              option Bono
+            label(for="" class='form-label') Categoria 
+            select(class='form-combo' name='comboCategoria' id='comboCategoria')
+              option(value='#{resultado[0].tip_ingreso_id}')= resultado[0].descripcion
+              option(value='1') Salario
+              option(value='2') Bono
           div(class='control')
-            label(for='' class='form-label') valor
-            input(type="number" class='form-input')
+            label(for='' class='form-label' name='') valor
+            input(type="number" class='form-input' name='txtValor' id='txtValor' value='#{resultado[0].valor}')
           div(class='control')
             label(for="" class='form-label') Fecha de publicacion
-            input(type="date" class='form-input')
+            input(type="date" class='form-input' name='dateFechaCreacion' id='dateFechaCreacion' value='#{resultado[0].fecha_creacion}')
           div(class='control')
-            button(class='') Registrar
+            button(class='btnEditarIngreso') actualizar
           
         p da click #[a(href='http://localhost:4040/app/ingresos') aqui ] para volver
-
+        
+        div(class='msj success hidden')
+          div(class='icon-cross close')
+          div se ha actualizado con exito.
+          
+        div(class='msj error hidden')
+          div(class='icon-cross close')
+          div ahy un error.
+        
+        
   block script
