@@ -31,7 +31,7 @@ block content
                 td(data-label='Categoria')= ingreso.descripcion
                 td(data-label='Valor')= ingreso.valor
                 td(data-label='Fecha Publicacion')= ingreso.fecha_creacion
-                td(data-label='Opciones') #[a(href='http://localhost:4040/app/editar/'+ingreso.ingresos_id) #[span(class='icon-pencil') ] ] #[a(href='') #[span(class='icon-cross')]]
+                td(data-label='Opciones' id='#{ingreso.ingresos_id}') #[a(href='http://localhost:4040/app/editar/'+ingreso.ingresos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='btnEliminarIngreso') #[span(class='icon-cross')]]
               
             
   

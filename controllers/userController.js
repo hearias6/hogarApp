@@ -124,6 +124,74 @@ module.exports = {
 
     });
 
+  },
+
+  eiminarIngreso: function(req, res, next) {
+      var id = req.body.id;
+      console.log('id controller: ' + id);
+
+      var consulta = 'delete from ingresos where ingresos_id = ?';
+
+      var resultado = {resultado:null};
+
+      db.query(consulta,id, function(err) {
+         if (!err) {
+           console.log('exito en la consulta');
+           resultado.resultado = 'success';
+         } else {
+           console.log('hay un error ');
+           resultado.resultado = 'error';
+           throw err;
+         }
+
+         res.send(resultado);
+      })
+  },
+
+  mostrarFormularioNuevo: function(req, res, next) {
+     var userName = req.session.userName;
+
+     if (userName !== undefined) {
+       res.render('ingresos/nuevo',{title:'Nuevo Ingreso'});
+     } else {
+       res.send('no logeado');
+     }
+  },
+
+  registrarIngreso: function(req, res, next) {
+
+    var categoria = req.body.comboCategoria;
+    var valor = req.body.txtValor;
+    var fecha = req.body.dateFechaCreacion;
+    var userName = req.session.userName;
+
+    var resultado = {resultado:null};
+
+    console.log('categoria: ' + categoria + ' valor: ' + valor + ' fecha: ' + fecha);
+
+    var datos = {
+                  valor:valor,
+                  fecha_creacion: fecha,
+                  tipo_ingreso: categoria,
+                  usuario: userName
+                };
+
+    var consulta = 'insert into ingresos set ? ';
+
+    db.query(consulta, datos, function(err, result) {
+      if (!err) {
+        console.log('exito en la consulta');
+        console.log('result: ' + result.length);
+        resultado.resultado = 'success';
+      } else {
+        console.log('error en la consulta ');
+        resultado.resultado = 'error';
+        throw err;
+      }
+
+      res.send(resultado);
+    })
+
   }
 
 }; // export
