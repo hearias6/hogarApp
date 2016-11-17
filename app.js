@@ -27,11 +27,14 @@ app.use(session(config));
 // archivos estaticos
 app.use('/web',express.static(path.join(__dirname, 'public')));
 
-// rutas de la pagian.
+// rutas de la pagina.
 var login = require('./routes/login');
-var users = require('./routes/users');
+var ingreso = require('./routes/ingresos');
+var gasto = require('./routes/gastos');
+
 app.use('/', login);
-app.use('/app', users);
+app.use('/app', ingreso);
+app.use('/app/gastos', gasto);
 
 // page no found 404
 app.use(function(req, res, next) {
