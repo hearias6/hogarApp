@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   $('.btnEditarIngreso').click(editar);
-  $('.btnEliminarIngreso').click(eliminar);
+  $('.buttonEliminarIngreso').click(eliminar);
   $('.btnNuevoIngreso').click(guardar);
 
   function editar(e) {
@@ -34,7 +34,8 @@ $(document).ready(function() {
 
   function eliminar(e) {
     e.preventDefault();
-    var id = $(this).parent().attr('id');
+    var eliminar = $(this).parent();
+    var id = eliminar.attr('id');
     console.log('id: ' + id);
 
     $.ajax({
@@ -45,7 +46,10 @@ $(document).ready(function() {
     })
     .done(function(resultado) {
       console.log("resultado: " + resultado.resultado);
-
+      if (resultado.resultado == 'success') {
+        console.log('se ha eliminado con exito.');
+        eliminar.parent().remove();
+      }
     })
     .fail(function() {
       console.log("error");
@@ -72,7 +76,7 @@ $(document).ready(function() {
 
       if (resultado.resultado == 'success') {
         $('.success').removeClass('hidden');
-        $('.error').addClass('hidden');        
+        $('.error').addClass('hidden');
       }
 
     })

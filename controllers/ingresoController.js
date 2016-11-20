@@ -11,7 +11,8 @@ module.exports = {
 
     var userName = req.session.userName;
 
-    if (userName !== undefined) {
+    //if (userName !== undefined) {
+    if (true) {
       res.render('home/index', { title: 'Home', userName : userName});
     } else {
       res.send('error 404');

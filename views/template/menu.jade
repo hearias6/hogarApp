@@ -1,29 +1,58 @@
 
 header
-
-  div(class='menu-bar')
-    span Menu  
-  nav(class='menu')
+  
+  div(class='menu-header')
+    
+    div(class='menu-bar')
+      span(class='icon icon-menu') 
+      
+    div(class='menu-user')
+      span(class='text-underline') #{userName} 
+    
+  nav(class='menu-options')
     ul
+      
+      - var active = ''
+      if title !== undefined 
+        - active = 'active'
+      
+      li(class='#{active}')
+        a(href="#") Menu 1 #[span ]
+        
+        ul(class='submenu hidden' )
+          li
+            a(href="#") submenu 1
+          li
+            a(href="#") submenu 2      
+      
+      - var home = ''      
       if title == 'Home'
-        li(class='active')
-          a(href="http://localhost:4040/app") Inicio
-      else 
-        li          
-          a(href="http://localhost:4040/app") Inicio
-          
+        - home = 'active'      
+      
+      li(class='#{home}')
+        a(href="http://localhost:4040/app") Inicio  
+        ul(class='submenu hidden')
+          li
+            a(href="#") submenu 1
+          li
+            a(href="#") submenu 2           
+      
       if title == 'Ingresos'        
         li(class='active')
           a(href="http://localhost:4040/app/ingresos") Ingresos
       else 
         li
-          a(href="http://localhost:4040/app/ingresos") Ingresos        
+          a(href="http://localhost:4040/app/ingresos") Ingresos 
+      
+      if title == 'Gastos'       
+        li(class='active')
+          a(href="http://localhost:4040/app/gastos") Gastos
+      else 
+        li
+          a(href="http://localhost:4040/app/gastos") Gastos
       li
-        a(href="http://localhost:4040/app/gastos") Gastos
-      li
-        a(href="http://localhost:4040") Cerrar sesion
-      li 
-        a(href='#') #{userName}
+        
+      
       
 
 

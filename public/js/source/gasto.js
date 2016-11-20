@@ -4,6 +4,13 @@ $(document).ready(function() {
 
   $('.btnNuevoGasto').click(registrar);
   $('.btnEditarGasto').click(actualizar);
+  $('.buttonEliminarGasto').click(eliminar);
+
+  $('.prueba').click(function(e) {
+    e.preventDefault();
+    console.log('prueba');
+    $(this).parent().parent().remove();
+  })
 
   function registrar(e) {
     e.preventDefault();
@@ -62,8 +69,37 @@ $(document).ready(function() {
     .always(function() {
       console.log("complete");
     });
+  }// end actualizar
 
+  function eliminar(e) {
+    e.preventDefault();
+    var etiqueta = $(this).parent();
+    var id = etiqueta.attr('id');
+    console.log('id: ' + id);
+
+    $.ajax({
+      url: 'http://localhost:4040/app/gastos/eliminar',
+      type: 'delete',
+      dataType: 'json',
+      data: {id:id}
+    })
+    .done(function(respuesta) {
+      console.log("respuesta: " + respuesta.resultado);
+      if (respuesta.resultado === 'success') {
+        console.log('se ha eliminado con exito..');
+        etiqueta.parent().remove();
+      } else {
+        console.log('hay un error.');
+      }
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
 
   }
+
 
 });

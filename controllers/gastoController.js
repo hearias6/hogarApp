@@ -185,6 +185,58 @@ module.exports = {
       res.send('no estas logeado');
     }
 
+  },
+
+/**
+eiminarIngreso: function(req, res, next) {
+    var id = req.body.id;
+    console.log('id controller: ' + id);
+
+    var consulta = 'delete from ingresos where ingresos_id = ?';
+
+    var resultado = {resultado:null};
+
+    db.query(consulta,id, function(err) {
+       if (!err) {
+         console.log('exito en la consulta');
+         resultado.resultado = 'success';
+       } else {
+         console.log('hay un error ');
+         resultado.resultado = 'error';
+         throw err;
+       }
+
+       res.send(resultado);
+    })
+},
+*/
+
+  eliminar : function(req, res, next) {
+      /*
+      DELETE FROM gastos
+      WHERE gastos_id = 1
+      */
+
+      var  id = req.body.id;
+      console.log('id gastoController ' + id);
+
+      var consulta = 'DELETE FROM gastos WHERE gastos_id = ?';
+
+      var resultado = {resultado:null};
+
+      db.query(consulta, id, function(error) {
+        if (!error) {
+          console.log('exito en el query');
+          resultado.resultado = 'success';
+        } else {
+          console.error('error en el query');
+          resultado.resultado = 'error';
+          throw error;
+        }
+
+        console.log('resultado: ' + resultado.resultado);
+        res.send(resultado);
+      })
   }
 
 };

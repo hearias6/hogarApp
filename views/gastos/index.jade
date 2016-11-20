@@ -29,8 +29,8 @@ block content
               tr
                 td(data-label='Categoria')= gasto.descripcion
                 td(data-label='Valor')= gasto.valor
-                td(data-label='Fecha Publicacion')= gasto.fecha_creacion
-                td(data-label='Opciones' id='#{gasto.gastos_id}') #[a(href='http://localhost:4040/app/gastos/editar/'+gasto.gastos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='btnEliminarGasto') #[span(class='icon-cross')]]
+                td(data-label='Fecha Publicacion')= gasto.fecha_creacion                
+                td(data-label='Opciones' id='#{gasto.gastos_id}') #[a(href='http://localhost:4040/app/gastos/editar/'+gasto.gastos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='buttonEliminarGasto') #[span(class='icon-cross')]] #[button(class='prueba') cerrar]
               //- code...
             
             
