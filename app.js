@@ -31,10 +31,12 @@ app.use('/web',express.static(path.join(__dirname, 'public')));
 var login = require('./routes/login');
 var ingreso = require('./routes/ingresos');
 var gasto = require('./routes/gastos');
+var perfil = require('./routes/perfil');
 
 app.use('/', login);
 app.use('/app', ingreso);
 app.use('/app/gastos', gasto);
+app.use('/app/perfil', perfil);
 
 // page no found 404
 app.use(function(req, res, next) {

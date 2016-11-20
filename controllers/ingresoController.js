@@ -33,8 +33,7 @@ module.exports = {
         if (!error) {
            var filas = rows.length;
            var resultado = rows;
-
-           console.log('categoria : ' + resultado[0].descripcion);
+           
            console.log('hay ' + filas + ' numeros de registros');
            res.render('ingresos/index', { title: 'Ingresos', userName : userName, resultado:resultado});
         }else{

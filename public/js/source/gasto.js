@@ -6,12 +6,6 @@ $(document).ready(function() {
   $('.btnEditarGasto').click(actualizar);
   $('.buttonEliminarGasto').click(eliminar);
 
-  $('.prueba').click(function(e) {
-    e.preventDefault();
-    console.log('prueba');
-    $(this).parent().parent().remove();
-  })
-
   function registrar(e) {
     e.preventDefault();
     console.log('registrar.');
