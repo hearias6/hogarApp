@@ -54,7 +54,22 @@ module.exports = {
   },
 
   mostrarFormularioNuevo : function(req, res, next) {
-      res.render('gastos/nuevo', {title: 'Gastos'});
+
+    var consulta = 'select tipo_gasto_id, descripcion FROM tipo_gasto';
+
+    db.query(consulta, function(error, rows, filds) {
+      if (!error) {
+        console.log('exito en el query.');
+        if (rows.length > 0) {
+          var filas = rows;
+          res.render('gastos/nuevo', {title: 'Gastos', filas:filas});
+        }
+      } else {
+        console.error('error en el query: ' + consulta);
+        throw error;
+      }
+    })
+
   },
 
   registrar : function(req, res, next) {

@@ -8,7 +8,7 @@ block content
         h2 Editar un gasto
         
         form(class='form')
-          input(type='text', name='id' id='id' value='#{resultado[0].gastos_id}')
+          input(type='hidden', name='id' id='id' value='#{resultado[0].gastos_id}')
           div(class='control')
             label(for="" class='form-label') Categoria 
             select(class='form-combo' name='comboCategoria' id='comboCategoria')

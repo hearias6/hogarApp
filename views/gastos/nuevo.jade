@@ -8,12 +8,12 @@ block content
         h2 Registrar un nuevo gasto.
       
         form(class='form')
-          input(type='hidden', name='id' id='id' )
+          
           div(class='control')
             label(for="" class='form-label') Categoria 
             select(class='form-combo' name='comboCategoria' id='comboCategoria')              
-              option(value='1') Salario
-              option(value='2') Bono
+              each item in filas
+                option(value=item.tipo_gasto_id)= item.descripcion
           div(class='control')
             label(for='' class='form-label' name='') valor
             input(type="number" class='form-input' name='txtValor' id='txtValor')

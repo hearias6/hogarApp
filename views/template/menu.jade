@@ -11,20 +11,6 @@ header
     
   nav(class='menu-options')
     ul
-      // 
-        example menu - submenu
-        - var active = ''
-        if title !== undefined 
-          - active = ''
-        
-        li(class='#{active}')
-          a(href="#") Menu 1 #[span ]
-          
-          ul(class='submenu hidden' )
-            li
-              a(href="#") submenu 1
-            li
-              a(href="#") submenu 2       
        
       - var home = ''      
       if title == 'Home'
@@ -46,7 +32,14 @@ header
         
       li(class='#{gastos}')
         a(href="http://localhost:4040/app/gastos") Gastos
-      
+    
+      -var estadistica = '';
+      if title == 'Estadistica'
+        - estadistica = 'active'; 
+         
+      li(class='#{estadistica}')
+        a(href="http://localhost:4040/app/estadistica") Estadistica      
+          
       li
         span Configuracion #[span(class='icon-point-down' style='font-size:0.7em')]
         ul(class='submenu hidden' )

@@ -33,7 +33,7 @@ module.exports = {
         if (!error) {
            var filas = rows.length;
            var resultado = rows;
-           
+
            console.log('hay ' + filas + ' numeros de registros');
            res.render('ingresos/index', { title: 'Ingresos', userName : userName, resultado:resultado});
         }else{
@@ -152,7 +152,22 @@ module.exports = {
      var userName = req.session.userName;
 
      if (userName !== undefined) {
-       res.render('ingresos/nuevo',{title:'Nuevo Ingreso'});
+
+       var consulta = 'SELECT tip_ingreso_id, descripcion FROM tipo_ingreso';
+
+       db.query(consulta, function(error, rows, filds) {
+         if (!error) {
+           console.log('exito en la consulta lista de tipo_ingreso.');
+           if (rows.length > 0) {
+             var filas = rows;
+             res.render('ingresos/nuevo',{title:'Nuevo Ingreso', filas: filas});
+           }
+         } else {
+           console.error('error en la consulta: ' + consulta);
+           throw error;
+         }
+       })
+
      } else {
        res.send('no logeado');
      }

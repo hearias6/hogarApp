@@ -8,12 +8,13 @@ block content
         h2 Registrar
       
         form(class='form')
-          input(type='hidden', name='id' id='id' )
+          
           div(class='control')
             label(for="" class='form-label') Categoria 
             select(class='form-combo' name='comboCategoria' id='comboCategoria')              
-              option(value='1') Salario
-              option(value='2') Bono
+              each fila in filas
+                option(value=fila.tip_ingreso_id)= fila.descripcion
+              //- code...
           div(class='control')
             label(for='' class='form-label' name='') valor
             input(type="number" class='form-input' name='txtValor' id='txtValor')
