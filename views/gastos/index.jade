@@ -1,0 +1,38 @@
+// mostrar los 
+
+extends ../template/layout
+
+block content
+  
+  include ../template/menu.jade
+  
+  main(class='container')
+    
+    section(class='row')
+      
+      
+      div(class='col-12')      
+        h2 Gastos        
+        
+        p da click #[a(href='http://localhost:4040/app/gastos/nuevo') aqui ] para un nuevo ingreso.
+        
+        table(class='tb-center')
+          thead
+            tr
+              th Categoria
+              th Valor
+              th Fecha Publicacion
+              th Opciones
+          tbody
+            
+            each gasto in resultado
+              tr
+                td(data-label='Categoria')= gasto.descripcion
+                td(data-label='Valor')= gasto.valor
+                td(data-label='Fecha Publicacion')= gasto.fecha_creacion                
+                td(data-label='Opciones' id='#{gasto.gastos_id}') #[a(href='http://localhost:4040/app/gastos/editar/'+gasto.gastos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='buttonEliminarGasto') #[span(class='icon-bin')]] 
+              //- code...
+            
+            
+  
+  block script 

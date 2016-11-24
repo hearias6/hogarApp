@@ -1,0 +1,35 @@
+extends ../template/layout
+
+block content
+  
+  main(class='container')
+    section(class='row')
+      div(class='col-12')
+        
+        h2 cambiar clave.
+        
+        form(class='form')
+          div(class='control')
+            label(for="" class='form-label') Contraseña actual
+            input(type="password" class='form-input' name='txtContrasena' id='txtContrasena')
+          div(class='control')
+            label(for="" class='form-label') Nueva contraseña
+            input(type="password" class='form-input' name='txtContrasenaNueva' id='txtContrasenaNueva')
+          div(class='control')
+            label(for="" class='form-label') Confirmar contraseña
+            input(type="password" class='form-input' name='txtConfirmarContrasena' id='txtConfirmarContrasena')
+          div(class='control')
+            button(class='btnCambiarClave') Cambiar clave
+
+        div(class='msj success hidden')
+          div(class='icon-cross close')
+          div(class='mensaje') 
+          
+        div(class='msj error hidden')
+          div(class='icon-cross close')
+          div(class='mensaje')
+        
+        a(href="http://localhost:4040/app/") Inicio
+        
+        
+  block script

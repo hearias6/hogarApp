@@ -10,29 +10,14 @@ block content
     
     section(class='row')
       
-      div(class='col-6')
-        h2 Nuevo Ingreso
-        
-        form(class='form')
-          div(class='control')
-            label(for="" class='form-label') Categoria
-            select(class='form-combo')
-              option Salario
-              option Bono
-          div(class='control')
-            label(for='' class='form-label') valor
-            input(type="number" class='form-input')
-          div(class='control')
-            label(for="" class='form-label') Fecha de publicacion
-            input(type="date" class='form-input')
-          div(class='control')
-            button(class='') Registrar
       
-      div(class='col-6')      
+      div(class='col-12')      
         h2 Ingresos        
-        p estos son los ingresos registrados hasta la fecha de hoy 
+        p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ea vitae assumenda consequatur animi fugit corporis quo quibusdam asperiores natus eius, harum hic neque molestiae? Aliquid optio totam reiciendis voluptates.
         
-        table()
+        p da click #[a(href='http://localhost:4040/app/nuevo') aqui ] para un nuevo ingreso.
+        
+        table(class='tb-center')
           thead
             tr
               th Categoria
@@ -40,26 +25,14 @@ block content
               th Fecha Publicacion
               th Opciones
           tbody
-            tr
-              td(data-label='Categoria') Salario 
-              td(data-label='Valor') 905.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') editar eliminar
-            tr
-              td(data-label='Categoria') Bonos 
-              td(data-label='Valor') 10.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') editar eliminar
-            tr
-              td(data-label='Categoria') Subsidio 
-              td(data-label='Valor') 200.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') editar eliminar
-            tr
-              td(data-label='Categoria') Comisiones
-              td(data-label='Valor') 150.000
-              td(data-label='Fecha Publicacion') 2016
-              td(data-label='Opciones') editar eliminar
+            
+            each ingreso in resultado
+              tr
+                td(data-label='Categoria')= ingreso.descripcion
+                td(data-label='Valor')= ingreso.valor
+                td(data-label='Fecha Publicacion')= ingreso.fecha_creacion
+                td(data-label='Opciones' id='#{ingreso.ingresos_id}') #[a(href='http://localhost:4040/app/editar/'+ingreso.ingresos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='buttonEliminarIngreso') #[span(class='icon-bin')]]
+              
             
   
   block script 

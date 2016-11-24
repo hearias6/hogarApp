@@ -1,0 +1,17 @@
+extends ../template/layout
+
+block content
+  
+  include ../template/menu.jade
+  
+  main(class='container')    
+    section(class='row')
+      div(class='col-12') 
+        h1 Estaditica.     
+        
+        p Suma Ingreso #[span(id='ingreso')]
+        p Suma Gasto #[span(id='gasto')]
+        
+  script(src='http://localhost:4040/web/bower/jquery/dist/jquery.min.js')
+  script(src='http://localhost:4040/web/js/source/estadistica.js')
+  

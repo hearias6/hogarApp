@@ -5,30 +5,30 @@ block content
   main(class='container')
     section(class='row')
       div(class='col-12')
-        h2 Editar
-        
+        h2 Registrar
+      
         form(class='form')
-          input(type='hidden', name='id' id='id' value='#{resultado[0].ingresos_id}')
+          
           div(class='control')
             label(for="" class='form-label') Categoria 
-            select(class='form-combo' name='comboCategoria' id='comboCategoria')
-              option(value='#{resultado[0].tip_ingreso_id}')= resultado[0].descripcion
-              option(value='1') Salario
-              option(value='2') Bono
+            select(class='form-combo' name='comboCategoria' id='comboCategoria')              
+              each fila in filas
+                option(value=fila.tip_ingreso_id)= fila.descripcion
+              //- code...
           div(class='control')
             label(for='' class='form-label' name='') valor
-            input(type="number" class='form-input' name='txtValor' id='txtValor' value='#{resultado[0].valor}')
+            input(type="number" class='form-input' name='txtValor' id='txtValor')
           div(class='control')
             label(for="" class='form-label') Fecha de publicacion
-            input(type="date" class='form-input' name='dateFechaCreacion' id='dateFechaCreacion' value='#{resultado[0].fecha_creacion}')
+            input(type="date" class='form-input' name='dateFechaCreacion' id='dateFechaCreacion')
           div(class='control')
-            button(class='btnEditarIngreso') actualizar
+            button(class='btnNuevoIngreso') Registrar
           
         p da click #[a(href='http://localhost:4040/app/ingresos') aqui ] para volver
         
         div(class='msj success hidden')
           div(class='icon-cross close')
-          div se ha actualizado con exito.
+          div se ha registrado con exito.
           
         div(class='msj error hidden')
           div(class='icon-cross close')

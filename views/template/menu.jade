@@ -1,27 +1,59 @@
 
 header
-
-  div(class='menu-bar')
-    span Menu  
-  nav(class='menu')
+  
+  div(class='menu-header')
+    
+    div(class='menu-bar')
+      span(class='icon icon-menu') 
+      
+    div(class='menu-user')
+      span(class='text-underline') #{userName} 
+    
+  nav(class='menu-options')
     ul
+       
+      - var home = ''      
       if title == 'Home'
-        li(class='active')
-          a(href="http://localhost:4040/app") Inicio
-      else 
-        li          
-          a(href="http://localhost:4040/app") Inicio
-          
-      if title == 'Ingresos'        
-        li(class='active')
-          a(href="http://localhost:4040/app/ingresos") Ingresos
-      else 
-        li
-          a(href="http://localhost:4040/app/ingresos") Ingresos        
-      li
+        - home = 'active'      
+      
+      li(class='#{home}')
+        a(href="http://localhost:4040/app") Inicio  
+                  
+      - var ingreso = ''
+      if title == 'Ingresos'
+          - ingreso = 'active'        
+            
+      li(class='#{ingreso}')
+        a(href="http://localhost:4040/app/ingresos") Ingresos
+      
+      -var gastos = '';
+      if title == 'Gastos'
+        - gastos = 'active'       
+        
+      li(class='#{gastos}')
         a(href="http://localhost:4040/app/gastos") Gastos
+    
+      -var estadistica = '';
+      if title == 'Estadistica'
+        - estadistica = 'active'; 
+         
+      li(class='#{estadistica}')
+        a(href="http://localhost:4040/app/estadistica") Estadistica      
+          
       li
-        a(href="http://localhost:4040") Cerrar sesion
+        span Configuracion #[span(class='icon-point-down' style='font-size:0.7em')]
+        ul(class='submenu hidden' )
+          li
+            a(href="http://localhost:4040/app/perfil") Perfil 
+          li
+            a(href="http://localhost:4040/app/perfil/clave") Cambiar Clave 
+          li
+            a(href="#") Cerrar sesion
+        
+        
+        
+      
+      
 
 
     

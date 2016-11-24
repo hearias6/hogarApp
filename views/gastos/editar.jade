@@ -5,14 +5,14 @@ block content
   main(class='container')
     section(class='row')
       div(class='col-12')
-        h2 Editar
+        h2 Editar un gasto
         
         form(class='form')
-          input(type='hidden', name='id' id='id' value='#{resultado[0].ingresos_id}')
+          input(type='hidden', name='id' id='id' value='#{resultado[0].gastos_id}')
           div(class='control')
             label(for="" class='form-label') Categoria 
             select(class='form-combo' name='comboCategoria' id='comboCategoria')
-              option(value='#{resultado[0].tip_ingreso_id}')= resultado[0].descripcion
+              option(value='#{resultado[0].tipo_gasto_id}')= resultado[0].descripcion
               option(value='1') Salario
               option(value='2') Bono
           div(class='control')
@@ -22,9 +22,9 @@ block content
             label(for="" class='form-label') Fecha de publicacion
             input(type="date" class='form-input' name='dateFechaCreacion' id='dateFechaCreacion' value='#{resultado[0].fecha_creacion}')
           div(class='control')
-            button(class='btnEditarIngreso') actualizar
+            button(class='btnEditarGasto') actualizar
           
-        p da click #[a(href='http://localhost:4040/app/ingresos') aqui ] para volver
+        p da click #[a(href='http://localhost:4040/app/gastos') aqui ] para volver
         
         div(class='msj success hidden')
           div(class='icon-cross close')

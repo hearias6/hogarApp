@@ -1,0 +1,37 @@
+extends ../template/layout
+
+block content
+  
+  main(class='container')
+    section(class='row')
+      div(class='col-12')
+        h2 Registrar un nuevo gasto.
+      
+        form(class='form')
+          
+          div(class='control')
+            label(for="" class='form-label') Categoria 
+            select(class='form-combo' name='comboCategoria' id='comboCategoria')              
+              each item in filas
+                option(value=item.tipo_gasto_id)= item.descripcion
+          div(class='control')
+            label(for='' class='form-label' name='') valor
+            input(type="number" class='form-input' name='txtValor' id='txtValor')
+          div(class='control')
+            label(for="" class='form-label') Fecha de publicacion
+            input(type="date" class='form-input' name='dateFechaCreacion' id='dateFechaCreacion')
+          div(class='control')
+            button(class='btnNuevoGasto') Registrar
+          
+        p da click #[a(href='http://localhost:4040/app/gastos') aqui ] para volver
+        
+        div(class='msj success hidden')
+          div(class='icon-cross close')
+          div se ha registrado con exito.
+          
+        div(class='msj error hidden')
+          div(class='icon-cross close')
+          div ahy un error.
+        
+        
+  block script

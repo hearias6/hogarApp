@@ -1,0 +1,42 @@
+btn-size = 140px
+btn-padding = 1%
+
+button(fontColor, backgroundColor)
+  color fontColor
+  background backgroundColor
+  font-weight bold
+
+[class^=btn]
+  border-radius 3%
+  border none
+  display block
+  margin 2%
+  max-height 50px
+  overflow: hidden
+
+.btn-default
+  width btn-size
+  padding btn-padding
+
+.btn-small
+  width btn-size * 0.60
+  padding btn-padding
+  font-size letra-pequena
+
+.btn-big
+  width btn-size * 1.40
+  padding btn-padding
+  font-size letra-grande
+  max-height 75px
+
+.btn-error
+  button(blanco, rojoOscuro)
+
+.btn-info
+  button(blanco, azulOscuro)
+
+.btn-success
+  button(blanco, verdeOscuro)
+
+.btn-warning
+  button(blanco, amarilloOscuro)

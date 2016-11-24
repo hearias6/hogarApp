@@ -20,15 +20,25 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // cookies y sessiones
 var cookieParser = require('cookie-parser');
 app.use(cookieParser());
+var session = require('express-session');
+var config = require('./config/session');
+app.use(session(config));
 
 // archivos estaticos
 app.use('/web',express.static(path.join(__dirname, 'public')));
 
-// rutas de la pagian.
+// rutas de la pagina.
 var login = require('./routes/login');
-var users = require('./routes/users');
+var ingreso = require('./routes/ingresos');
+var gasto = require('./routes/gastos');
+var perfil = require('./routes/perfil');
+var estadistica = require('./routes/estadistica');
+
 app.use('/', login);
-app.use('/app', users);
+app.use('/app', ingreso);
+app.use('/app/gastos', gasto);
+app.use('/app/perfil', perfil);
+app.use('/app/estadistica',estadistica);
 
 // page no found 404
 app.use(function(req, res, next) {

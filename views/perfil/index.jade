@@ -1,0 +1,33 @@
+extends ../template/layout
+
+block content
+  
+  main(class='container')
+    
+    section(class='row')
+    
+      div(class='col-10')  
+        
+        h1 Perfil
+        div(class='col-4')
+          // foto perfil
+          img(src='http://localhost:4040/web/img/perfil/default.png' class='img')
+            
+          a(href="#") cambiar foto de perfil.
+          
+          
+        div(class='col-6')
+          // datos personales.
+          p Usuario: #[span(class='text-weight') #{resultado[0].email}] 
+          p Nombre: #[span(class='text-weight') #{resultado[0].nombre}] 
+          p Apellido: #[span(class='text-weight') #{resultado[0].apellido}] 
+          p Edad: #[span(class='text-weight') #{resultado[0].edad}] 
+          p Telefono: #[span(class='text-weight') #{resultado[0].telefono}] 
+          p Fecha Nacimiento: #[span(class='text-weight') #{resultado[0].fecha_nacimiento}] 
+          
+          a(href="http://localhost:4040/app/perfil/editar/"+resultado[0].perfil_id) #[span(class='icon-pencil')]        
+      
+      a(href="http://localhost:4040/app/") Inicio    
+      
+      
+  block script 
