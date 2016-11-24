@@ -21,14 +21,24 @@ module.exports = {
 
     var email = req.body.email;
     var contrasena = req.body.contrasena;
-    console.log('email: ' + email + ' Contrasena: ' + contrasena);
+
+    function encriptar(email, pass) {
+        var crypto = require('crypto');
+        var hmac = crypto.createHmac('sha1', email).update(pass).digest('hex');
+        return hmac
+    }
+
+   var passEncriptada = encriptar(email,contrasena);
+
+    console.log('email: ' + email + ' Contrasena: ' + contrasena + ' passEncriptada: ' + passEncriptada);
+
     var resultado = {resultado:null}
 
     var consulta = "select email from usuarios where email = ? and contrasena = ?";
 
     var filas = null;
 
-    db.query(consulta,[email, contrasena],function(error, rows, filds) {
+    db.query(consulta,[email, passEncriptada],function(error, rows, filds) {
       if (error) {
         console.log('Error en la consulta.');
         resultado.resultado = 'error';
@@ -63,10 +73,18 @@ module.exports = {
       var email = req.body.email;
       var pass = req.body.contrasena;
 
-      var datos = {email : email, contrasena : pass}
+      function encriptar(email, pass) {
+          var crypto = require('crypto');
+          var hmac = crypto.createHmac('sha1', email).update(pass).digest('hex');
+          return hmac
+      }
+
+      var passEncriptada = encriptar(email,pass);
+
+      var datos = {email : email, contrasena : passEncriptada}
       var resultado = {resultado:null};
 
-      console.log('email: ' + email + ' pass: ' + pass);
+      console.log('email: ' + email + ' pass: ' + pass + ' passEncriptada: ' + passEncriptada);
 
       var consulta = 'insert into usuarios set ?';
 

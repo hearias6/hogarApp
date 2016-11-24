@@ -147,6 +147,12 @@ module.exports = {
     var userName = req.session.userName;
     if (userName !== undefined) {
 
+      function encriptar(email, pass) {
+          var crypto = require('crypto');
+          var hmac = crypto.createHmac('sha1', email).update(pass).digest('hex');
+          return hmac
+      }
+
       var contrasena = req.body.txtContrasena;
       var contrasenaNueva = req.body.txtContrasenaNueva;
       var confirmarContrasena = req.body.txtConfirmarContrasena;
@@ -173,6 +179,10 @@ module.exports = {
       }
 
       if (contrasenaValida) {
+
+        contrasena = encriptar(userName, contrasena);
+        console.log('contrasena encriptada: ' + contrasena);
+
         // valido si la contrasena existe.
         db.query(consulta,[userName, contrasena], function(error, rows, filds) {
           if (!error) {
@@ -180,6 +190,9 @@ module.exports = {
             console.log('hay ' + rows.length + ' que coinciden.. en cambiar clave.');
             if (rows.length) {
               console.log('la contrasena es correcta..');
+
+              contrasenaNueva = encriptar(userName, contrasenaNueva);
+              console.log('contrasenaNueva: ' + contrasenaNueva);
 
               db.query(actualizar,[contrasenaNueva, userName], function(error, result) {
                 if (!error) {
