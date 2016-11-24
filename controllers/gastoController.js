@@ -16,8 +16,6 @@ module.exports = {
     consulta += "where gastos.tipo_gasto = tipo_gasto.tipo_gasto_id ";
     consulta += "and gastos.usuario = ? ";
 
-
-
     db.query(consulta, userName, function(error, rows, fields) {
         if (!error) {
           console.log('exito en el query.');

@@ -8,6 +8,7 @@ module.exports = {
 
   // get.
   mostrarLogin:function(req, res, next) {
+
     console.log('Nombre de usuario: ' + req.session.user_id);
     res.render('login/login', { title: 'Login' });
   },
