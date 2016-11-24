@@ -74,15 +74,20 @@ module.exports = {
 
     var userName = req.session.userName;
 
+    // fecha actual.
+    var Moment = require('moment-timezone');
+    var date = Moment().tz('America/Bogota').format("YYYY-MM-DD");
+    console.log('fecha actual de registrar ingreso : ' + date);
+
     var datos = {
       valor : req.body.txtValor,
-      fecha_creacion : req.body.dateFechaCreacion,
-      fecha_modificacion : req.body.dateFechaCreacion,
+      fecha_creacion : date,
+      fecha_modificacion : date,
       tipo_gasto : req.body.comboCategoria,
       usuario : userName
     };
 
-    console.log('valor: ' + datos.valor + ' fecha_creacion: ' + datos.fecha_creacion + ' tipo_gasto: ' + datos.tipo_gasto + ' usuario: ' + datos.usuario);
+    console.log('valor: ' + datos.valor + ' fecha_creacion: ' + date + ' tipo_gasto: ' + datos.tipo_gasto + ' usuario: ' + datos.usuario);
 
     var consulta = 'insert into gastos set ?';
     var respuesta = {respuesta:null};
@@ -161,14 +166,19 @@ module.exports = {
 
     if (userName !== undefined) {
 
+      // fecha actual.
+      var Moment = require('moment-timezone');
+      var date = Moment().tz('America/Bogota').format("YYYY-MM-DD");
+      console.log('fecha actual de registrar ingreso : ' + date);
+
       var datos = {
         valor : req.body.txtValor,
-        fecha_modificacion : req.body.dateFechaCreacion,
+        fecha_modificacion : date,
         tipo_gasto : req.body.comboCategoria,
         usuario : userName
       };
 
-      console.log('valor: ' + datos.valor + ' tipo_gasto: ' + datos.tipo_gasto );
+      console.log('valor: ' + datos.valor + ' tipo_gasto: ' + datos.tipo_gasto + ' fecha modificacion: ' +  date);
 
       var id = req.body.id;
 
