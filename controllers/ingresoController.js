@@ -97,13 +97,18 @@ module.exports = {
     var valor = req.body.txtValor;
     var fecha = req.body.dateFechaCreacion;
 
+    // fecha actual.
+    var Moment = require('moment-timezone');
+    var date = Moment().tz('America/Bogota').format("YYYY-MM-DD");
+    console.log('fecha actual de modificar ingreso : ' + date);
+
     var resultado = {resultado:null};
 
-    console.log('categoria: ' + categoria + ' valor: ' + valor + ' fecha: ' + fecha);
+    console.log('categoria: ' + categoria + ' valor: ' + valor + ' fecha: ' + fecha + ' date: ' + date);
 
     var datos = {
                   valor:valor,
-                  fecha_creacion: fecha,
+                  fecha_modificacion: date,
                   tipo_ingreso: categoria
                 };
 
@@ -180,13 +185,20 @@ module.exports = {
     var fecha = req.body.dateFechaCreacion;
     var userName = req.session.userName;
 
+    // fecha actual.
+    var Moment = require('moment-timezone');
+    var date = Moment().tz('America/Bogota').format("YYYY-MM-DD");
+    console.log('fecha actual de registrar ingreso : ' + date);
+
+
     var resultado = {resultado:null};
 
-    console.log('categoria: ' + categoria + ' valor: ' + valor + ' fecha: ' + fecha);
+    console.log('categoria: ' + categoria + ' valor: ' + valor + ' fecha: ' + fecha + 'date ' + date);
 
     var datos = {
                   valor:valor,
-                  fecha_creacion: fecha,
+                  fecha_creacion: date,
+                  fecha_modificacion: date,
                   tipo_ingreso: categoria,
                   usuario: userName
                 };
