@@ -103,8 +103,12 @@ module.exports = {
           res.json(resultado);
       })
 
+  },
+
+  cerrarSesion: function(req, res, next) {
+    req.session.userName = null;
+    console.log('cerrar sesion: ' + req.session.userName);
+    res.redirect('/');
   }
-
-
 
 };
