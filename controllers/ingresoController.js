@@ -95,7 +95,7 @@ module.exports = {
     var id = req.body.id;
     var categoria = req.body.comboCategoria;
     var valor = req.body.txtValor;
-    var fecha = req.body.dateFechaCreacion;
+
 
     // fecha actual.
     var Moment = require('moment-timezone');
@@ -182,7 +182,6 @@ module.exports = {
 
     var categoria = req.body.comboCategoria;
     var valor = req.body.txtValor;
-    var fecha = req.body.dateFechaCreacion;
     var userName = req.session.userName;
 
     // fecha actual.
@@ -193,7 +192,7 @@ module.exports = {
 
     var resultado = {resultado:null};
 
-    console.log('categoria: ' + categoria + ' valor: ' + valor + ' fecha: ' + fecha + 'date ' + date);
+    console.log('categoria: ' + categoria + ' valor: ' + valor + ' fecha: ' + date + 'date ' + date);
 
     var datos = {
                   valor:valor,
