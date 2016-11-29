@@ -230,6 +230,11 @@ module.exports = {
     } else {
       res.send('vuelva a logearse');
     }
+  },
+
+
+  mostrarFotoPerfil : function(req, res, next) {
+    res.render('perfil/foto',{title:'foto'})
   }
 
 };

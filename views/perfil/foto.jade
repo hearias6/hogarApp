@@ -1,0 +1,27 @@
+extends ../template/layout
+
+block content
+  
+  main(class='container')
+    
+    section(class='row')
+    
+      div(class='col-10')  
+      
+        
+        
+        form(class='form' method='post' action='http://localhost:4040/app/perfil/foto' enctype="multipart/form-data")   
+          div(class="control")
+            label(for="titulo") Titulo
+            input(type="text" class='form-input' name='titulo' id='titulo')     
+          div(class='control')
+            label(for='foto' class='form-label' name='') Seleccione una foto.
+            input(type="file" class='form-input' name='foto' id='foto')
+          div(class='control')
+            button(class='buttonPerfil') cambiar foto
+        
+    
+        a(href="http://localhost:4040/app/perfil") Inicio    
+      
+      
+  block script 
