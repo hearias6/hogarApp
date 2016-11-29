@@ -2,7 +2,7 @@ $(document).ready(function() {
 
   $('.btnEditarPerfil').click(editar);
   $('.btnCambiarClave').click(cambiarClave);
-
+  $('.buttonPerfil').click(cambiarFoto);
 
   function editar(e) {
 
@@ -65,6 +65,41 @@ $(document).ready(function() {
       .always(function() {
         console.log("complete");
       });
+
+  } // end cambiarClave
+
+  function cambiarFoto(e) {
+    e.preventDefault();
+    var datos = $(this).parent().parent().serialize();
+    console.log('datos: ' + datos);
+
+    $.ajax({
+      url: 'http://localhost:4040/app/perfil/foto',
+      type: 'post',
+      dataType: 'json',
+      data: datos
+    })
+    .done(function(resultado) {
+      console.log("resultado: " + resultado.resultado);
+      console.log("mensaje: " + resultado.mensaje);
+
+      if (resultado.resultado == 'success') {
+        $('.success').removeClass('hidden');
+        $('.error').addClass('hidden');
+        $('.success .mensaje').text(resultado.mensaje);
+      } else {
+        $('.error').removeClass('hidden');
+        $('.success').addClass('hidden');
+        $('.error .mensaje').text(resultado.mensaje);
+      }
+
+    })
+    .fail(function() {
+      console.log("error");
+    })
+    .always(function() {
+      console.log("complete");
+    });
 
   }
 

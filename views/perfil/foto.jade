@@ -8,7 +8,7 @@ block content
     
       div(class='col-10')  
       
-        
+        h1 cambiar foto de perfil.
         
         form(class='form' method='post' action='http://localhost:4040/app/perfil/foto' enctype="multipart/form-data")   
           div(class="control")
@@ -18,8 +18,15 @@ block content
             label(for='foto' class='form-label' name='') Seleccione una foto.
             input(type="file" class='form-input' name='foto' id='foto')
           div(class='control')
-            button(class='buttonPerfil') cambiar foto
+            button(class='') cambiar foto
         
+        div(class='msj success hidden')
+          div(class='icon-cross close')
+          div(class='mensaje')
+            
+        div(class='msj error hidden')
+          div(class='icon-cross close')
+          div(class='mensaje')        
     
         a(href="http://localhost:4040/app/perfil") Inicio    
       
