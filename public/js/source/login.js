@@ -22,7 +22,7 @@ $(document).ready(function() {
         if (data.resultado == 'success') {
           //$('.success').removeClass('hidden');
           //$('.error').addClass('hidden');
-          $(location).attr('href','http://localhost:4040/app'); 
+          $(location).attr('href','http://localhost:4040/app');
         }
 
         if (data.resultado == 'no existe') {
@@ -56,9 +56,20 @@ $(document).ready(function() {
        data: datos
      })
      .done(function(resultado) {
+
        console.log('resultado: ' + resultado.resultado);
-       $('.success').removeClass('hidden');
-       $('.error').addClass('hidden');
+       console.log('mensaje: ' + resultado.mensaje);
+
+       if (resultado.resultado == 'success') {
+         $('.success').removeClass('hidden');
+         $('.error').addClass('hidden');
+         $('.success .mensaje').text(resultado.mensaje);
+       } else {
+         $('.error').removeClass('hidden');
+         $('.success').addClass('hidden');
+         $('.error .mensaje').text(resultado.mensaje);
+       }
+
      })
      .fail(function(jqXHR, textStatus, errorThrown) {
        console.log("error");

@@ -73,35 +73,69 @@ module.exports = {
 
       var email = req.body.email;
       var pass = req.body.contrasena;
+      var pass2 = req.body.contrasena2;
 
-      function encriptar(email, pass) {
-          var crypto = require('crypto');
-          var hmac = crypto.createHmac('sha1', email).update(pass).digest('hex');
-          return hmac
+      var resultado = {resultado:null, mensaje: null};
+
+      console.log('pass2: ' + pass2);
+
+      var validarContrasena = false;
+
+      if (pass == pass2) {
+        validarContrasena = true;
+      } else {
+        validarContrasena = false;
+        resultado.resultado = 'error';
+        resultado.mensaje = 'las contraseñas no coinciden';
       }
 
-      var passEncriptada = encriptar(email,pass);
+      if (validarContrasena) {
+        function encriptar(email, pass) {
+            var crypto = require('crypto');
+            var hmac = crypto.createHmac('sha1', email).update(pass).digest('hex');
+            return hmac
+        }
 
-      var datos = {email : email, contrasena : passEncriptada}
-      var resultado = {resultado:null};
+        var passEncriptada = encriptar(email,pass);
 
-      console.log('email: ' + email + ' pass: ' + pass + ' passEncriptada: ' + passEncriptada);
+        var datos = {email : email, contrasena : passEncriptada}
 
-      var consulta = 'insert into usuarios set ?';
+        console.log('email: ' + email + ' pass: ' + pass + ' passEncriptada: ' + passEncriptada);
 
-      db.query(consulta, datos, function(err, result) {
-          if (err) {
-              console.log('error en la consulta');
-              throw err;
-              resultado.resultado = 'error'
-          } else {
-              console.log('exito en la consulta');
-              resultado.resultado = "success";
-              console.log('resultado : ' + result);
-          }
+        var consulta = 'insert into usuarios set ?';
 
-          res.json(resultado);
-      })
+        db.query(consulta, datos, function(err, result) {
+            if (err) {
+                console.log('error en la consulta');
+                throw err;
+                resultado.resultado = 'error';
+                resultado.mensaje = 'error en la base de datos.';
+            } else {
+                console.log('exito en la consulta');
+                resultado.resultado = "success";
+                resultado.mensaje = "se ha registrado el usuario exitosamente";
+                console.log('resultado : ' + result);
+            }
+
+            // crear perfil
+            if (resultado.resultado == "success") {
+              console.log('dentro de insertar perfil.');
+              var consulta2 = 'insert into perfil (usuario) values (?)';
+              db.query(consulta2,email,function(error, result) {
+                if (error) {
+                  console.log('error en insertar perfil');
+                  throw error;
+                }
+              })
+            };
+
+            res.json(resultado);
+        })
+
+      }else {
+        res.json(resultado);
+      }
+
 
   },
 

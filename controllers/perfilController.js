@@ -2,6 +2,8 @@ var mysql = require('mysql');
 var config = require('../config/database');
 var db = mysql.createConnection(config);
 
+var fs = require('fs');
+
 module.exports = {
 
   index: function(req, res, next) {
@@ -230,6 +232,41 @@ module.exports = {
     } else {
       res.send('vuelva a logearse');
     }
+  },
+
+  mostrarFotoPerfil : function(req, res, next) {
+    res.render('perfil/foto',{title:'foto'})
+  },
+
+  cambiarFotoPerfil : function(req, res, next) {
+
+    try {
+
+      var rutaTemp = './uploads/'+req.file.filename;
+      var rutaActual = './public/img/perfil/'+req.file.originalname;
+      var resultado = {resultado:'', mensaje:''}
+
+      console.log('ruta temporal: ' + rutaTemp);
+      console.log('ruta actual: ' + rutaActual);
+
+      //copiamos el archivo a la carpeta definitiva de fotos
+      fs.createReadStream(rutaTemp).pipe(fs.createWriteStream(rutaActual));
+      //borramos el archivo temporal creado
+      fs.unlink(rutaTemp);
+
+      resultado.resultado = 'success';
+      resultado.mensaje = 'se ha cambiado la foto de perfil con exito';
+      res.send(resultado);
+
+    } catch (e) {
+      console.log('error: ' + e);
+      throw e;
+      resultado.resultado = 'error';
+      resultado.mensaje = 'Hay un error en el sistema';
+      res.send(resultado);
+    }
+
   }
+
 
 };
