@@ -6,19 +6,23 @@ block content
     
     section(class='row')
     
-      div(class='col-10')  
+      div(class='col-8')  
       
         h1 cambiar foto de perfil.
         
+        center          
+          img(src='http://localhost:4040/web/img/perfil/#{foto}' style='width:200px; height:200px')
+        
         form(class='form' method='post' action='http://localhost:4040/app/perfil/foto' enctype="multipart/form-data")   
-          div(class="control")
-            label(for="titulo") Titulo
-            input(type="text" class='form-input' name='titulo' id='titulo')     
+          
+          input(type="text", name="email", id="email" value="#{email}")
+          
           div(class='control')
             label(for='foto' class='form-label' name='') Seleccione una foto.
             input(type="file" class='form-input' name='foto' id='foto')
           div(class='control')
-            button(class='') cambiar foto
+            button(class='') cambiar foto  
+          
         
         div(class='msj success hidden')
           div(class='icon-cross close')
@@ -28,7 +32,8 @@ block content
           div(class='icon-cross close')
           div(class='mensaje')        
     
-        a(href="http://localhost:4040/app/perfil") Inicio    
+        center
+          a(href="http://localhost:4040/app/perfil") Inicio    
       
       
   block script 

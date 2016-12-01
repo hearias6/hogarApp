@@ -24,7 +24,7 @@ module.exports = {
         var consulta = '';
         consulta += 'SELECT perfil.perfil_id, usuarios.email, perfil.nombre, ';
         consulta += 'perfil.apellido, perfil.edad, ';
-        consulta += 'perfil.telefono, perfil.fecha_nacimiento ';
+        consulta += 'perfil.telefono, perfil.fecha_nacimiento, perfil.foto_perfil ';
         consulta += 'FROM usuarios, perfil ';
         consulta += 'WHERE usuarios.email = perfil.usuario ';
         consulta += 'AND usuarios.email = ? ';
@@ -235,7 +235,11 @@ module.exports = {
   },
 
   mostrarFotoPerfil : function(req, res, next) {
-    res.render('perfil/foto',{title:'foto'})
+    var email = req.session.userName;
+    var foto = req.params.foto;
+    console.log('email: ' + email);
+    console.log('foto perfil: '  + foto);
+    res.render('perfil/foto',{title:'foto', foto:foto, email: email});
   },
 
   cambiarFotoPerfil : function(req, res, next) {
@@ -251,12 +255,29 @@ module.exports = {
 
       //copiamos el archivo a la carpeta definitiva de fotos
       fs.createReadStream(rutaTemp).pipe(fs.createWriteStream(rutaActual));
+
       //borramos el archivo temporal creado
       fs.unlink(rutaTemp);
 
+      // actualizar el perfil.
+      var consulta = 'update perfil set foto_perfil = ? where usuario = ?';
+      var img = req.file.originalname;
+      var email = req.body.email;
+      console.log('imagen nueva: ' + img + ' email: ' + email);
+
+      db.query(consulta, [img, email], function(error, result) {
+          if (!error) {
+            console.log('error, para actualizar foto perfil');
+          } else {
+            console.log('erorr en actualizar foto perfil');
+            throw error;
+          }
+      })
+
       resultado.resultado = 'success';
       resultado.mensaje = 'se ha cambiado la foto de perfil con exito';
-      res.send(resultado);
+      //res.send(resultado);
+      res.redirect('/app/perfil/foto/' + img);
 
     } catch (e) {
       console.log('error: ' + e);

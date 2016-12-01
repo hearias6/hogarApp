@@ -11,10 +11,14 @@ block content
         h1 Perfil
         div(class='col-4')
           // foto perfil
-          img(src='http://localhost:4040/web/img/perfil/default.png' class='img')
+          - var img = 'default.png';
+          if resultado[0].foto_perfil != ''
+            - img = resultado[0].foto_perfil
+        
             
-          a(href="#") cambiar foto de perfil.
-          
+          center
+            img(src='http://localhost:4040/web/img/perfil/#{img}' style='width:200px; height:200px')            
+            a(href="http://localhost:4040/app/perfil/foto/#{img}" style='display:block') cambiar foto de perfil.          
           
         div(class='col-6')
           // datos personales.
@@ -24,6 +28,7 @@ block content
           p Edad: #[span(class='text-weight') #{resultado[0].edad}] 
           p Telefono: #[span(class='text-weight') #{resultado[0].telefono}] 
           p Fecha Nacimiento: #[span(class='text-weight') #{resultado[0].fecha_nacimiento}] 
+          p Foto perfil : #{resultado[0].foto_perfil}
           
           a(href="http://localhost:4040/app/perfil/editar/"+resultado[0].perfil_id) #[span(class='icon-pencil')]        
       
