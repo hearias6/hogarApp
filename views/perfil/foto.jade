@@ -10,12 +10,17 @@ block content
       
         h1 cambiar foto de perfil.
         
+        if foto != ''
+          - foto = email+'/perfil/'+foto;
+        else
+          - foto = 'perfil/default.png';
+        
         center          
-          img(src='http://localhost:4040/web/img/perfil/#{foto}' style='width:200px; height:200px')
+          img(src='http://localhost:4040/web/img/#{foto}' style='width:200px; height:200px')
         
         form(class='form' method='post' action='http://localhost:4040/app/perfil/foto' enctype="multipart/form-data")   
           
-          input(type="text", name="email", id="email" value="#{email}")
+          input(type="hidden", name="email", id="email" value="#{email}")
           
           div(class='control')
             label(for='foto' class='form-label' name='') Seleccione una foto.
@@ -33,7 +38,7 @@ block content
           div(class='mensaje')        
     
         center
-          a(href="http://localhost:4040/app/perfil") Inicio    
+          a(href="http://localhost:4040/app/perfil") #[span(class='icon icon-home')]    
       
       
   block script 

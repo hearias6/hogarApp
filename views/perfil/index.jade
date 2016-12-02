@@ -11,14 +11,13 @@ block content
         h1 Perfil
         div(class='col-4')
           // foto perfil
-          - var img = 'default.png';
+          - var img = 'perfil/default.png';
           if resultado[0].foto_perfil != ''
-            - img = resultado[0].foto_perfil
-        
-            
+            - img = resultado[0].email + '/perfil/' + resultado[0].foto_perfil;
+                    
           center
-            img(src='http://localhost:4040/web/img/perfil/#{img}' style='width:200px; height:200px')            
-            a(href="http://localhost:4040/app/perfil/foto/#{img}" style='display:block') cambiar foto de perfil.          
+            img(src='http://localhost:4040/web/img/#{img}' style='width:200px; height:200px')            
+            a(href="http://localhost:4040/app/perfil/foto" style='display:block') cambiar foto de perfil.          
           
         div(class='col-6')
           // datos personales.
@@ -32,7 +31,8 @@ block content
           
           a(href="http://localhost:4040/app/perfil/editar/"+resultado[0].perfil_id) #[span(class='icon-pencil')]        
       
-      a(href="http://localhost:4040/app/") Inicio    
+          center 
+            a(href="http://localhost:4040/app/") #[span(class='icon icon-home')]    
       
       
   block script 

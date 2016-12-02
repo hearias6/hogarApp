@@ -2,7 +2,7 @@
 var mysql = require('mysql');
 var config = require('../config/database');
 var db = mysql.createConnection(config);
-
+var fs = require('fs');
 
 module.exports = {
 
@@ -114,7 +114,18 @@ module.exports = {
                 console.log('exito en la consulta');
                 resultado.resultado = "success";
                 resultado.mensaje = "se ha registrado el usuario exitosamente";
-                console.log('resultado : ' + result);
+
+                // crear carpetas necesarias... o directorios necesarios..
+                const dirUser = './public/img/'+email;
+                const dirPerfil = './public/img/'+email+'/perfil';
+
+                if (!fs.existsSync(dirUser)){
+                  fs.mkdirSync(dirUser);
+                }
+
+                if (!fs.existsSync(dirPerfil)){
+                  fs.mkdirSync(dirPerfil);
+                }
             }
 
             // crear perfil

@@ -11,7 +11,7 @@ router.get('/editar/:id', controller.perfilController.mostrarFormularioEditar);
 router.put('/actualizar', controller.perfilController.actualizar);
 router.get('/clave', controller.perfilController.formularioCambiarClave);
 router.put('/cambiarClave', controller.perfilController.cambiarClave);
-router.get('/foto/:foto',controller.perfilController.mostrarFotoPerfil);
+router.get('/foto',controller.perfilController.mostrarFotoPerfil);
 router.post('/foto', upload, controller.perfilController.cambiarFotoPerfil);
 
 module.exports = router;
