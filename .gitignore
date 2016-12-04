@@ -2,4 +2,4 @@
 /node_modules
 /public/bower
 /uploads
-/public/img/perfil
+/public/img/*

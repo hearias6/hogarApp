@@ -24,7 +24,7 @@ module.exports = {
         var consulta = '';
         consulta += 'SELECT perfil.perfil_id, usuarios.email, perfil.nombre, ';
         consulta += 'perfil.apellido, perfil.edad, ';
-        consulta += 'perfil.telefono, perfil.fecha_nacimiento ';
+        consulta += 'perfil.telefono, perfil.fecha_nacimiento, perfil.foto_perfil ';
         consulta += 'FROM usuarios, perfil ';
         consulta += 'WHERE usuarios.email = perfil.usuario ';
         consulta += 'AND usuarios.email = ? ';
@@ -235,28 +235,92 @@ module.exports = {
   },
 
   mostrarFotoPerfil : function(req, res, next) {
-    res.render('perfil/foto',{title:'foto'})
+    var email = req.session.userName;
+    var consulta = 'select foto_perfil from perfil where usuario = ?';
+    var resultado = {resultado:'', mensaje:''}
+
+    db.query(consulta, email, function(error, rows, fields) {
+      if (!error) {
+        resultado.resultado = 'success';
+      } else {
+        throw error;
+      }
+
+      if (resultado.resultado == 'success') {
+
+        if (rows.length == 1) {
+          var foto = rows[0].foto_perfil;
+          console.log('foto: ' + foto);
+          res.render('perfil/foto',{title:'foto', foto:foto, email: email});
+        } else {
+          resultado.resultado = 'error';
+          resultado.mensaje = 'error en mostrarFormularioEditar.';
+          res.send(resultado);
+        }
+
+      }
+    })
+
   },
 
   cambiarFotoPerfil : function(req, res, next) {
 
     try {
 
+      var img = req.file.originalname;
+      var email = req.body.email;
       var rutaTemp = './uploads/'+req.file.filename;
-      var rutaActual = './public/img/perfil/'+req.file.originalname;
-      var resultado = {resultado:'', mensaje:''}
+      var rutaActual = './public/img/' + email + '/perfil/'+req.file.originalname;
+      var mirarFotoAnterior = 'select foto_perfil from perfil where usuario = ? ';
+      var actualizarFotoPerfil = 'update perfil set foto_perfil = ? where usuario = ?';
 
-      console.log('ruta temporal: ' + rutaTemp);
-      console.log('ruta actual: ' + rutaActual);
+      var resultado = {resultado:'', mensaje:''};
 
-      //copiamos el archivo a la carpeta definitiva de fotos
-      fs.createReadStream(rutaTemp).pipe(fs.createWriteStream(rutaActual));
-      //borramos el archivo temporal creado
-      fs.unlink(rutaTemp);
+      db.query(mirarFotoAnterior, email, function(error, rows, filed) {
 
-      resultado.resultado = 'success';
-      resultado.mensaje = 'se ha cambiado la foto de perfil con exito';
-      res.send(resultado);
+        if (!error) {
+          resultado.resultado = 'success';
+        } else {
+          throw error;
+          console.error('error en mirar Foto Anterior');
+        }
+
+        if (resultado.resultado == 'success') {
+
+          // eliminar foto perfil anterior..
+          if (rows[0].foto_perfil != '' && rows[0].foto_perfil.length > 0) {
+            fs.unlink('./public/img/' + email + '/perfil/' + rows[0].foto_perfil);
+          }else {
+            console.log('no hay foto anterior.');
+          }
+
+          //copiamos el archivo a la carpeta definitiva de fotos
+          fs.createReadStream(rutaTemp).pipe(fs.createWriteStream(rutaActual));
+
+          //borramos el archivo temporal creado
+          fs.unlink(rutaTemp);
+
+          // actualizar foto perfill...
+          db.query(actualizarFotoPerfil, [img, email], function(error, result) {
+              if (!error) {
+                resultado.resultado = 'success';
+                resultado.mensaje = 'se ha cambiado la foto de perfil con exito';
+                res.redirect('/app/perfil/foto');
+              } else {
+                console.log('erorr en actualizar foto perfil');
+                resultado.resultado = 'error';
+                resultado.mensaje = 'Hay un problema en actualizar la foto de perfil..';
+                res.send(resultado);
+                throw error;
+              }
+          });
+
+        } else {
+          console.log('hay un error....');
+          res.send('Error en mirar Foto Anterior...')
+        }
+
+      });
 
     } catch (e) {
       console.log('error: ' + e);
