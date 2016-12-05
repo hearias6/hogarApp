@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 23-11-2016 a las 04:21:43
+-- Tiempo de generación: 05-12-2016 a las 19:29:28
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -40,13 +40,7 @@ CREATE TABLE `gastos` (
 --
 
 INSERT INTO `gastos` (`gastos_id`, `valor`, `fecha_creacion`, `fecha_modificacion`, `tipo_gasto`, `usuario`) VALUES
-(1, '300000', '2016-11-20', '2016-11-20', 3, 'usuario1@hotmail.com'),
-(2, '500000', '2016-11-20', '2016-11-20', 2, 'usuario1@hotmail.com'),
-(3, '222', '2016-11-20', '2016-11-20', 1, 'usuario1@hotmail.com'),
-(4, '10000', '2016-11-20', '2016-11-20', 1, 'hans3102@hotmail.com'),
-(5, '20000', '2016-11-20', '2016-11-20', 2, 'hans3102@hotmail.com'),
-(6, '30000', '2016-11-20', '2016-11-20', 3, 'hans3102@hotmail.com'),
-(7, '222', '2016-11-21', '2016-11-21', 5, 'hans3102@hotmail.com');
+(1, '2000', '2016-12-04', '2016-12-04', 1, 'usuario@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -68,10 +62,7 @@ CREATE TABLE `ingresos` (
 --
 
 INSERT INTO `ingresos` (`ingresos_id`, `valor`, `fecha_creacion`, `fecha_modificacion`, `tipo_ingreso`, `usuario`) VALUES
-(2, '3000000', '2016-11-20', NULL, 1, 'usuario1@hotmail.com'),
-(3, '200000', '2016-11-20', NULL, 1, 'hans3102@hotmail.com'),
-(4, '30000', '2016-11-20', NULL, 2, 'hans3102@hotmail.com'),
-(6, '222', '0000-00-00', NULL, 2, 'hans3102@hotmail.com');
+(3, '20000', '2016-12-04', '2016-12-04', 1, 'usuario@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -86,15 +77,16 @@ CREATE TABLE `perfil` (
   `edad` varchar(3) DEFAULT NULL,
   `telefono` varchar(15) DEFAULT NULL,
   `fecha_nacimiento` date DEFAULT NULL,
-  `usuario` varchar(30) DEFAULT NULL
+  `usuario` varchar(30) DEFAULT NULL,
+  `foto_perfil` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Volcado de datos para la tabla `perfil`
 --
 
-INSERT INTO `perfil` (`perfil_id`, `nombre`, `apellido`, `edad`, `telefono`, `fecha_nacimiento`, `usuario`) VALUES
-(1, 'Hans', 'Arias', '10', 'null', '0000-00-00', 'hans3102@hotmail.com');
+INSERT INTO `perfil` (`perfil_id`, `nombre`, `apellido`, `edad`, `telefono`, `fecha_nacimiento`, `usuario`, `foto_perfil`) VALUES
+(4, NULL, NULL, NULL, NULL, NULL, 'usuario@hotmail.com', 'Penguins.jpg');
 
 -- --------------------------------------------------------
 
@@ -147,7 +139,7 @@ INSERT INTO `tipo_ingreso` (`tip_ingreso_id`, `descripcion`) VALUES
 
 CREATE TABLE `usuarios` (
   `email` varchar(30) NOT NULL,
-  `contrasena` varchar(10) NOT NULL
+  `contrasena` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -155,9 +147,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`email`, `contrasena`) VALUES
-('admin@gmail.com', '123'),
-('hans3102@hotmail.com', '123'),
-('usuario1@hotmail.com', '123');
+('usuario@hotmail.com', 'f2b88d9647ea095eb40ea479b73c1759d4268f8b');
 
 --
 -- Índices para tablas volcadas
@@ -212,17 +202,17 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `gastos`
 --
 ALTER TABLE `gastos`
-  MODIFY `gastos_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `gastos_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `ingresos`
 --
 ALTER TABLE `ingresos`
-  MODIFY `ingresos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `ingresos_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `perfil_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `perfil_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `tipo_gasto`
 --
