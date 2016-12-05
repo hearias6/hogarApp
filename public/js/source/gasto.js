@@ -2,8 +2,8 @@ $(document).ready(function() {
 
   console.log('cargando gasto.js');
 
-  $('.btnNuevoGasto').click(registrar);
-  $('.btnEditarGasto').click(actualizar);
+  $('.buttonNuevoGasto').click(registrar);
+  $('.buttonEditarGasto').click(actualizar);
   $('.buttonEliminarGasto').click(eliminar);
 
   function registrar(e) {

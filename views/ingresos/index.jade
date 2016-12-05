@@ -12,27 +12,27 @@ block content
       
       
       div(class='col-12')      
-        h2 Ingresos        
-        p  Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel ea vitae assumenda consequatur animi fugit corporis quo quibusdam asperiores natus eius, harum hic neque molestiae? Aliquid optio totam reiciendis voluptates.
-        
-        p da click #[a(href='http://localhost:4040/app/nuevo') aqui ] para un nuevo ingreso.
-        
-        table(class='tb-center')
+        h2 Ingresos                
+        a(href='http://localhost:4040/app/nuevo') #[span(class='icon icon-plus')]
+        p hay #{filas} filas.
+        table(class='tb-center')          
           thead
             tr
               th Categoria
               th Valor
               th Fecha Publicacion
               th Opciones
-          tbody
-            
-            each ingreso in resultado
-              tr
-                td(data-label='Categoria')= ingreso.descripcion
-                td(data-label='Valor')= ingreso.valor
-                td(data-label='Fecha Publicacion')= ingreso.fecha_creacion
-                td(data-label='Opciones' id='#{ingreso.ingresos_id}') #[a(href='http://localhost:4040/app/editar/'+ingreso.ingresos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='buttonEliminarIngreso') #[span(class='icon-bin')]]
-              
+          tbody            
+            if filas > 0
+              each ingreso in resultado              
+                tr
+                  td(data-label='Categoria')= ingreso.descripcion
+                  td(data-label='Valor')= ingreso.valor
+                  td(data-label='Fecha Publicacion')= ingreso.fecha_creacion
+                  td(data-label='Opciones' id='#{ingreso.ingresos_id}') #[a(href='http://localhost:4040/app/editar/'+ingreso.ingresos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='buttonEliminarIngreso') #[span(class='icon-bin')]]  
+            else 
+              tr 
+                td(colspan='4') No hay registros
             
   
   block script 

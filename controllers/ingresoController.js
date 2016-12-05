@@ -35,7 +35,7 @@ module.exports = {
            var resultado = rows;
 
            console.log('hay ' + filas + ' numeros de registros');
-           res.render('ingresos/index', { title: 'Ingresos', userName : userName, resultado:resultado});
+           res.render('ingresos/index', { title: 'Ingresos', userName : userName, resultado:resultado, filas:filas});
         }else{
            console.log('error... en la consulta: ' + consulta + ' por favor verificar');
            throw error;

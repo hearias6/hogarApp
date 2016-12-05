@@ -20,10 +20,10 @@ block content
             input(type="number" class='form-input' name='txtValor' id='txtValor' value='#{resultado[0].valor}')
         
           div(class='control')
-            button(class='btnEditarIngreso') actualizar
-          
-        p da click #[a(href='http://localhost:4040/app/ingresos') aqui ] para volver
-        
+            button(class='buttonEditarIngreso') actualizar
+    
+        center #[a(href="http://localhost:4040/app/ingresos" class="icon-undo2" style='font-size:2em')]
+            
         div(class='msj success hidden')
           div(class='icon-cross close')
           div se ha actualizado con exito.

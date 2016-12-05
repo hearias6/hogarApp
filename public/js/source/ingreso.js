@@ -1,8 +1,8 @@
 $(document).ready(function() {
 
-  $('.btnEditarIngreso').click(editar);
+  $('.buttonEditarIngreso').click(editar);
   $('.buttonEliminarIngreso').click(eliminar);
-  $('.btnNuevoIngreso').click(guardar);
+  $('.buttonNuevoIngreso').click(guardar);
 
   function editar(e) {
     e.preventDefault();
