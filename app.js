@@ -33,12 +33,14 @@ var ingreso = require('./routes/ingresos');
 var gasto = require('./routes/gastos');
 var perfil = require('./routes/perfil');
 var estadistica = require('./routes/estadistica');
+var reporte = require('./routes/reportes');
 
 app.use('/', login);
 app.use('/app', ingreso);
 app.use('/app/gastos', gasto);
 app.use('/app/perfil', perfil);
 app.use('/app/estadistica',estadistica);
+app.use('/app/reporte',reporte);
 
 // page no found 404
 app.use(function(req, res, next) {
