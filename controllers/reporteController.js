@@ -15,6 +15,7 @@ var app = {
   @description generar reporte.
   */
 
+  // pdfkit.
   index: function(req, res, next) {
 
     var PDFDocument, doc;
@@ -42,7 +43,13 @@ var app = {
      doc.end();
 
      res.send('reporte');
-  }
+  },
+
+   reporte: function(req, res, next) {
+
+   }
+
+
 
 }
 
