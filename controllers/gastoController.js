@@ -20,9 +20,10 @@ module.exports = {
         if (!error) {
           console.log('exito en el query.');
           console.log('se ha devuelto : ' + rows.length + ' numero de filas');
+          var filas = rows.length;
           var resultado = rows;
 
-          res.render('gastos/index', {title: 'Gastos', userName: userName, resultado: resultado});
+          res.render('gastos/index', {title: 'Gastos', userName: userName, resultado: resultado, filas:filas});
         } else {
           console.error('eror en la consulta de index.');
           throw error;;

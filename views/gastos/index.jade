@@ -13,8 +13,9 @@ block content
       
       div(class='col-12')      
         h2 Gastos        
-        
-        p da click #[a(href='http://localhost:4040/app/gastos/nuevo') aqui ] para un nuevo ingreso.
+              
+        a(href='http://localhost:4040/app/gastos/nuevo') #[span(class='icon icon-plus')]
+        p hay #{filas} filas.
         
         table(class='tb-center')
           thead
@@ -24,15 +25,15 @@ block content
               th Fecha Publicacion
               th Opciones
           tbody
-            
-            each gasto in resultado
-              tr
-                td(data-label='Categoria')= gasto.descripcion
-                td(data-label='Valor')= gasto.valor
-                td(data-label='Fecha Publicacion')= gasto.fecha_creacion                
-                td(data-label='Opciones' id='#{gasto.gastos_id}') #[a(href='http://localhost:4040/app/gastos/editar/'+gasto.gastos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='buttonEliminarGasto') #[span(class='icon-bin')]] 
-              //- code...
-            
-            
-  
+            if filas > 0
+              each gasto in resultado
+                tr
+                  td(data-label='Categoria')= gasto.descripcion
+                  td(data-label='Valor')= gasto.valor
+                  td(data-label='Fecha Publicacion')= gasto.fecha_creacion                
+                  td(data-label='Opciones' id='#{gasto.gastos_id}') #[a(href='http://localhost:4040/app/gastos/editar/'+gasto.gastos_id) #[span(class='icon-pencil') ] ] #[a(href='#' class='buttonEliminarGasto') #[span(class='icon-bin')]] 
+            else 
+              tr 
+                td(colspan='4') No hay registros
+              
   block script 
