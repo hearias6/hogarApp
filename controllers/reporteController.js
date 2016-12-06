@@ -54,13 +54,29 @@ var app = {
           var filas = rows.length, lines =[];
           async.eachSeries(rows, function(value, callback) {
             var description = value.descripcion, valor = value.valor, create = value.fecha_creacion;
-            lines.push('<tr><td data-label="Categoria">'+description+'</td><td data-label="Valor">'+valor+'</td><td data-label="Fecha Publicacion">'+create+'</td></tr>');
+
+            var temp = '';
+            temp += '<tr style="color:#aaa">';
+            temp += '<td>'+description+'</td>';
+            temp += '<td>'+valor+'</td>';
+            temp += '<td>'+create+'</td>';
+            temp += '</tr>';
+
+            lines.push(temp);
             callback();
           }, function(err) {
             if (err) { throw err; }
             try {
               var tBody = lines.join("");
-              var html = '<table class="tb-center"><thead><tr><th>Categoria</th><th>Valor</th><th>Fecha Publicacion</th></tr></thead><tbody>'+tBody+'</tbody></table>';
+              var html = '';
+              html += '<table style="width:90%; margin:auto; border:1px; font-family:arial; font-size:1.2em; text-align:center">';
+              html += '<thead style="background-color:#ddd">';
+              html += '<tr style="color:#777; font-weight:bold">';
+              html += '<th>Categoria</th><th>Valor</th><th>Fecha Publicacion</th>';
+              html += '</tr></thead>';
+              html += '<tbody>'+tBody+'</tbody>';
+              html += '</table>';
+
               jsreport.render({
                 template: {
                   content: html,
@@ -72,6 +88,7 @@ var app = {
                 }
               }).then(function(resp) {
                 resp.result.pipe(fs.createWriteStream('./public/pdf/mipdf.pdf'));
+                res.redirect('/app/ingresos');
                 console.log('creado')
               }).catch(function(e) {
                 console.log('error', e);
