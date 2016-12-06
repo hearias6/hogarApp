@@ -8,13 +8,7 @@ module.exports = {
   index : function(req, res, next) {
 
     var userName = req.session.userName;
-
-    var consulta = "SELECT ";
-    consulta += "gastos.gastos_id, tipo_gasto.tipo_gasto_id, tipo_gasto.descripcion, ";
-    consulta += "gastos.valor, gastos.fecha_creacion, gastos.usuario ";
-    consulta += "FROM gastos, tipo_gasto ";
-    consulta += "where gastos.tipo_gasto = tipo_gasto.tipo_gasto_id ";
-    consulta += "and gastos.usuario = ? ";
+    var consulta = "SELECT g.gastos_id, tg.tipo_gasto_id, tg.descripcion, g.valor, g.fecha_creacion, g.usuario FROM gastos as g, tipo_gasto as tg where g.tipo_gasto = tg.tipo_gasto_id and g.usuario = ? ";
 
     db.query(consulta, userName, function(error, rows, fields) {
         if (!error) {
