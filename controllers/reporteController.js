@@ -88,7 +88,11 @@ var app = {
                 }
               }).then(function(resp) {
                 resp.result.pipe(fs.createWriteStream('./public/pdf/mipdf.pdf'));
-                res.redirect('/app/ingresos');
+                //res.redirect('/app/ingresos');
+                var mjs = 'se ha creado el documento de pdf, favor buscarlo en la siguiente ruta. public/pdf';
+                var respuesta = {respuesta:'success', mensaje:mjs};
+                res.send(respuesta);
+
                 console.log('creado')
               }).catch(function(e) {
                 console.log('error', e);
