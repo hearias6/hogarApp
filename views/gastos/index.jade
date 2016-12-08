@@ -16,6 +16,7 @@ block content
               
         a(href='http://localhost:4040/app/gastos/nuevo') #[span(class='icon icon-plus')]
         p hay #{filas} filas.
+        center #[a(href="#" class='icon-file-pdf link-reporte-gasto')]
         
         table(class='tb-center')
           thead
@@ -35,5 +36,14 @@ block content
             else 
               tr 
                 td(colspan='4') No hay registros
+                
+    div(class='msj success hidden')
+      div(class='icon-cross close')
+      div(class='mensaje') 
+                            
+    div(class='msj error hidden')
+      div(class='icon-cross close')
+      div(class='mensaje')                
+                
               
   block script 
