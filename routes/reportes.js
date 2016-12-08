@@ -5,6 +5,7 @@ var controller = require('.././controllers');
 //var rep = controller.reporteController;
 //router.get('/', rep.index);
 
-router.get('/reportes', controller.reporteController.reporteIngresos);
+router.get('/reportesIngresos', controller.reporteController.reporteIngresos);
+router.get('/reportesGastos', controller.reporteController.reporteGastos);
 
 module.exports = router;
