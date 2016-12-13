@@ -22,18 +22,18 @@ body
                 // Mostrar los mensajes del chat.
                 div(id='chat')
 
-        // formulario del chat. 
+        // formulario del chat.
         
         // usuario
-        div(class='form-group')
-            label usuario:
-            input(class='form-control', placeholder='Ingrese Nombre usuario', id='usuario')
-            
+        span(class="text-primary") #{email} 
+        input(type="hidden", id='usuario' value='#{email}')        
+              
         // mensaje
         div(class='form-group')
             label Mensaje: 
             input(class='form-control', placeholder='Ingrese su mensaje', id='mensaje')
-        button(onclick='enviarMsj()', class='btn btn-primary') enviar mensaje
+        //button(onclick='enviarMsj()', class='btn btn-primary') enviar mensaje
+        button(id='btnMensaje', class='btn btn-primary') enviar mensaje
 
 
     

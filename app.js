@@ -58,9 +58,9 @@ app.use('/app/reporte',reporte);
 // esperando la conexion...
 
 // vista.
-app.get('/chat',function(solicitud, respuesta){
-    respuesta.render('chat/chat');
-});
+var chatView = require('./routes/chat');
+app.use('/app/chat', chatView);
+
 
 // socket - server.
 io.on('connection',function(socket){
