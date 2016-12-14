@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 05-12-2016 a las 19:29:28
+-- Tiempo de generación: 14-12-2016 a las 19:09:13
 -- Versión del servidor: 10.1.16-MariaDB
 -- Versión de PHP: 5.6.24
 
@@ -19,6 +19,28 @@ SET time_zone = "+00:00";
 --
 -- Base de datos: `hogarapp`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `chat`
+--
+
+CREATE TABLE `chat` (
+  `chat_id` int(8) NOT NULL,
+  `usuario` varchar(30) NOT NULL,
+  `mensaje` varchar(200) NOT NULL,
+  `fecha_mensaje` date NOT NULL,
+  `hora_mensaje` time NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `chat`
+--
+
+INSERT INTO `chat` (`chat_id`, `usuario`, `mensaje`, `fecha_mensaje`, `hora_mensaje`) VALUES
+(1, 'hans3102@hotmail.com', '123', '2016-12-14', '12:12:00'),
+(2, 'hans3102@hotmail.com', 'hol', '2016-12-14', '12:12:00');
 
 -- --------------------------------------------------------
 
@@ -40,7 +62,7 @@ CREATE TABLE `gastos` (
 --
 
 INSERT INTO `gastos` (`gastos_id`, `valor`, `fecha_creacion`, `fecha_modificacion`, `tipo_gasto`, `usuario`) VALUES
-(1, '2000', '2016-12-04', '2016-12-04', 1, 'usuario@hotmail.com');
+(1, '2001', '2016-12-04', '2016-12-08', 1, 'usuario@hotmail.com');
 
 -- --------------------------------------------------------
 
@@ -86,7 +108,8 @@ CREATE TABLE `perfil` (
 --
 
 INSERT INTO `perfil` (`perfil_id`, `nombre`, `apellido`, `edad`, `telefono`, `fecha_nacimiento`, `usuario`, `foto_perfil`) VALUES
-(4, NULL, NULL, NULL, NULL, NULL, 'usuario@hotmail.com', 'Penguins.jpg');
+(4, NULL, NULL, NULL, NULL, NULL, 'usuario@hotmail.com', 'Penguins.jpg'),
+(5, NULL, NULL, NULL, NULL, NULL, 'hans3102@hotmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -147,11 +170,18 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`email`, `contrasena`) VALUES
+('hans3102@hotmail.com', 'bdc5b5303090c37a9ee8e596c70510434f0ed0b4'),
 ('usuario@hotmail.com', 'f2b88d9647ea095eb40ea479b73c1759d4268f8b');
 
 --
 -- Índices para tablas volcadas
 --
+
+--
+-- Indices de la tabla `chat`
+--
+ALTER TABLE `chat`
+  ADD PRIMARY KEY (`chat_id`);
 
 --
 -- Indices de la tabla `gastos`
@@ -199,6 +229,11 @@ ALTER TABLE `usuarios`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `chat`
+--
+ALTER TABLE `chat`
+  MODIFY `chat_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
 -- AUTO_INCREMENT de la tabla `gastos`
 --
 ALTER TABLE `gastos`
@@ -212,7 +247,7 @@ ALTER TABLE `ingresos`
 -- AUTO_INCREMENT de la tabla `perfil`
 --
 ALTER TABLE `perfil`
-  MODIFY `perfil_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `perfil_id` int(8) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT de la tabla `tipo_gasto`
 --
