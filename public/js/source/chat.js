@@ -4,7 +4,6 @@ $(document).ready(function() {
   var url = 'http://localhost:4040';
   var socket = io.connect(url, { 'forceNew': true }  );
 
-  //
   $('#btnMensaje').click(enviarMsj);
 
   // cuando se oprime el boton << enviar mensaje >>
@@ -12,14 +11,33 @@ $(document).ready(function() {
 
       var usuario = $('#usuario').val();
       var mensaje = $('#mensaje').val();
-
-
       console.log('usuario: ' + usuario + ' mensaje: '+  mensaje);
-
       var msj = { user: usuario, chat: mensaje };
 
-      // enviar un mensaje al servidor.
-      socket.emit('cliente-msj',msj);
+      // guardar en la base de datos..
+      $.ajax({
+        url: 'http://localhost:4040/app/chat/guardarMensaje',
+        type: 'POST',
+        dataType: 'JSON',
+        data: msj
+      })
+      .done(function(respuesta) {
+        console.log("respuesta " + respuesta.resultado);
+        console.log("mensaje " + respuesta.mensaje);
+
+        if (respuesta.resultado == 'success') {
+          console.log('proceder con el socket..');
+          // enviar un mensaje al servidor.
+          socket.emit('cliente-msj',msj);
+        }
+      })
+      .fail(function() {
+        console.log("error");
+      })
+      .always(function() {
+        console.log("complete");
+      });
+
       return false;
   }
 
